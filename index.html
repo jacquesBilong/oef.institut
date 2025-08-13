@@ -58,39 +58,33 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
+        /* Logo Container */
         .logo-container {
             display: flex;
-            align-items: baseline;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: var(--terre);
+            align-items: center;
+            gap: 10px;
             text-decoration: none;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
             transition: all 0.3s ease;
         }
 
-        .header.scrolled .logo {
-            font-size: 1.6rem;
-        }
-
-        .point {
-            color: var(--rose-fonce);
-            font-size: 2rem;
-            transition: all 0.3s ease;
-        }
-
-        .header.scrolled .point {
-            font-size: 1.8rem;
+        .header.scrolled .logo-img {
+            height: 40px;
         }
 
         .slogan {
             font-style: italic;
             color: var(--terre-clair);
-            margin-left: 0.8rem;
             font-size: 0.9rem;
             transition: all 0.3s ease;
+            margin: 0;
+            padding: 0;
+            background: transparent;
+            user-select: none;
         }
 
         .header.scrolled .slogan {
@@ -978,6 +972,14 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+
+        /* Empêcher la sélection du texte */
+        ::selection {
+            background: transparent;
+        }
+        ::-moz-selection {
+            background: transparent;
+        }
     </style>
 </head>
 <body>
@@ -986,10 +988,12 @@
         <div class="loader-spinner"></div>
     </div>
 
-    <!-- Header -->
+    <!-- Header avec logo image -->
     <header class="header">
         <a href="#" class="logo-container">
-            <span class="logo">OEF</span><span class="point">.</span>
+            <!-- Logo en image - à remplacer par votre fichier -->
+            <img src="foto/5.png" alt="Logo OEF" class="logo-img">
+            <!-- Slogan -->
             <span class="slogan">En nu 'efkes niks'</span>
         </a>
         <nav>
@@ -1003,290 +1007,289 @@
         </nav>
     </header>
 
-    <main>
-        <!-- Hero -->
-        <section class="hero" style="background-image: url('https://images.unsplash.com/photo-1549902529-a515e31c63e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')">
-            <div class="hero-overlay"></div>
-            <div class="hero-content">
-                <h1>Pédicure Médicale & Réflexologie Plantaire</h1>
-                <p class="hero-text">Soins professionnels des pieds à Vosselaar et Merksem</p>
-                <a href="#contact" class="hero-btn">Prendre rendez-vous</a>
-            </div>
-        </section>
+    <!-- Hero -->
+    <section class="hero" style="background-image: url('https://images.unsplash.com/photo-1549902529-a515e31c63e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Pédicure Médicale & Réflexologie Plantaire</h1>
+            <p class="hero-text">Soins professionnels des pieds à Vosselaar et Merksem</p>
+            <a href="#contact" class="hero-btn">Prendre rendez-vous</a>
+        </div>
+    </section>
 
-        <!-- About -->
-        <section id="about" class="section">
-            <div class="section-container">
-                <div class="section-title">
-                    <h2>Notre Approche</h2>
+    <!-- About -->
+    <section id="about" class="section">
+        <div class="section-container">
+            <div class="section-title">
+                <h2>Notre Approche</h2>
+            </div>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>Chez OEF., nous considérons les soins des pieds comme une pratique essentielle de bien-être. Nos pieds, souvent négligés, sont pourtant le fondement de notre posture et de notre mobilité.</p>
+                    <p>Notre approche combine l'expertise technique de la pédicure médicale avec les bienfaits holistiques de la réflexologie plantaire. Chaque soin est personnalisé selon vos besoins spécifiques.</p>
+                    <p>Nous créons un espace calme et professionnel où chaque client est accueilli avec attention et où chaque traitement est réalisé avec le plus grand soin.</p>
+                    <ul class="about-list">
+                        <li><i class="fas fa-check-circle"></i> Expertise médicale certifiée</li>
+                        <li><i class="fas fa-check-circle"></i> Matériel stérilisé et produits de qualité</li>
+                        <li><i class="fas fa-check-circle"></i> Approche globale du bien-être</li>
+                        <li><i class="fas fa-check-circle"></i> Environnement hygiénique et apaisant</li>
+                    </ul>
                 </div>
-                <div class="about-grid">
-                    <div class="about-text">
-                        <p>Chez OEF., nous considérons les soins des pieds comme une pratique essentielle de bien-être. Nos pieds, souvent négligés, sont pourtant le fondement de notre posture et de notre mobilité.</p>
-                        <p>Notre approche combine l'expertise technique de la pédicure médicale avec les bienfaits holistiques de la réflexologie plantaire. Chaque soin est personnalisé selon vos besoins spécifiques.</p>
-                        <p>Nous créons un espace calme et professionnel où chaque client est accueilli avec attention et où chaque traitement est réalisé avec le plus grand soin.</p>
-                        <ul class="about-list">
-                            <li><i class="fas fa-check-circle"></i> Expertise médicale certifiée</li>
-                            <li><i class="fas fa-check-circle"></i> Matériel stérilisé et produits de qualité</li>
-                            <li><i class="fas fa-check-circle"></i> Approche globale du bien-être</li>
-                            <li><i class="fas fa-check-circle"></i> Environnement hygiénique et apaisant</li>
+                <div class="about-image" style="background-image: url('https://images.unsplash.com/photo-1562325959-6a8c2b274b71?auto=format&fit=crop&w=1950&q=80')"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="section">
+        <div class="section-container">
+            <div class="section-title">
+                <h2>Nos Soins</h2>
+            </div>
+            <div class="services-grid">
+                <!-- Pédicure -->
+                <div class="service-card">
+                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1596704017250-7b1583929c28?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')"></div>
+                    <div class="service-content">
+                        <h3>Soins de Pédicure</h3>
+                        <ul class="service-list">
+                            <li>
+                                <div class="service-price">Pédicure 30min - 27,5€</div>
+                                <div class="service-details">Coupe et limage des ongles, soin des cuticules, nettoyage et hydratation</div>
+                            </li>
+                            <li>
+                                <div class="service-price">Pédicure 45min - 40€</div>
+                                <div class="service-details">Soin complet incluant l'élimination des callosités et des peaux mortes</div>
+                            </li>
+                            <li>
+                                <div class="service-price">Pédicure 60min - 62,5€</div>
+                                <div class="service-details">Soin approfondi avec massage des points de pression (15min)</div>
+                            </li>
+                            <li>
+                                <div class="service-price">Pédicure Luxe 75min - 70€</div>
+                                <div class="service-details">Expérience complète avec gommage, masque et massage relaxant</div>
+                            </li>
                         </ul>
                     </div>
-                    <div class="about-image" style="background-image: url('https://images.unsplash.com/photo-1562325959-6a8c2b274b71?auto=format&fit=crop&w=1950&q=80')"></div>
                 </div>
-            </div>
-        </section>
 
-        <!-- Services -->
-        <section id="services" class="section">
-            <div class="section-container">
-                <div class="section-title">
-                    <h2>Nos Soins</h2>
-                </div>
-                <div class="services-grid">
-                    <!-- Pédicure -->
-                    <div class="service-card">
-                        <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1596704017250-7b1583929c28?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')"></div>
-                        <div class="service-content">
-                            <h3>Soins de Pédicure</h3>
-                            <ul class="service-list">
-                                <li>
-                                    <div class="service-price">Pédicure 30min - 27,5€</div>
-                                    <div class="service-details">Coupe et limage des ongles, soin des cuticules, nettoyage et hydratation</div>
-                                </li>
-                                <li>
-                                    <div class="service-price">Pédicure 45min - 40€</div>
-                                    <div class="service-details">Soin complet incluant l'élimination des callosités et des peaux mortes</div>
-                                </li>
-                                <li>
-                                    <div class="service-price">Pédicure 60min - 62,5€</div>
-                                    <div class="service-details">Soin approfondi avec massage des points de pression (15min)</div>
-                                </li>
-                                <li>
-                                    <div class="service-price">Pédicure Luxe 75min - 70€</div>
-                                    <div class="service-details">Expérience complète avec gommage, masque et massage relaxant</div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Réflexologie -->
-                    <div class="service-card">
-                        <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1950&q=80')"></div>
-                        <div class="service-content">
-                            <h3>Réflexologie & Options</h3>
-                            <ul class="service-list">
-                                <li>
-                                    <div class="service-price">Massage réflexologique 15min - 20€</div>
-                                    <div class="service-details">À combiner avec une pédicure de 30 ou 45min</div>
-                                </li>
-                                <li>
-                                    <div class="service-price">Massage réflexologique 30min - 35€</div>
-                                    <div class="service-details">Inclut les mollets pour une relaxation complète</div>
-                                </li>
-                                <li>
-                                    <div class="service-price">Réflexologie plantaire 30min - 40€</div>
-                                    <div class="service-details">Stimulation des zones réflexes pour un bien-être global</div>
-                                </li>
-                                <li>
-                                    <div class="service-price">Réflexologie plantaire 60min - 70€</div>
-                                    <div class="service-details">Séance complète avec analyse approfondie (recommandée pour la première visite)</div>
-                                </li>
-                                <li>
-                                    <div class="service-price">Options supplémentaires</div>
-                                    <div class="service-details">Pédicure médicale (+7,5€), Vernis (15€), Gel vernis (25€), Visite à domicile (7,5€ + 1€/km au-delà de 5km)</div>
-                                </li>
-                            </ul>
-                        </div>
+                <!-- Réflexologie -->
+                <div class="service-card">
+                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1950&q=80')"></div>
+                    <div class="service-content">
+                        <h3>Réflexologie & Options</h3>
+                        <ul class="service-list">
+                            <li>
+                                <div class="service-price">Massage réflexologique 15min - 20€</div>
+                                <div class="service-details">À combiner avec une pédicure de 30 ou 45min</div>
+                            </li>
+                            <li>
+                                <div class="service-price">Massage réflexologique 30min - 35€</div>
+                                <div class="service-details">Inclut les mollets pour une relaxation complète</div>
+                            </li>
+                            <li>
+                                <div class="service-price">Réflexologie plantaire 30min - 40€</div>
+                                <div class="service-details">Stimulation des zones réflexes pour un bien-être global</div>
+                            </li>
+                            <li>
+                                <div class="service-price">Réflexologie plantaire 60min - 70€</div>
+                                <div class="service-details">Séance complète avec analyse approfondie (recommandée pour la première visite)</div>
+                            </li>
+                            <li>
+                                <div class="service-price">Options supplémentaires</div>
+                                <div class="service-details">Pédicure médicale (+7,5€), Vernis (15€), Gel vernis (25€), Visite à domicile (7,5€ + 1€/km au-delà de 5km)</div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Gallery Carousel -->
-        <section id="gallery" class="section">
-            <div class="section-container">
-                <div class="section-title">
-                    <h2>Nos Résultats</h2>
-                </div>
-                <div class="carousel-container">
-                    <div class="gallery-carousel carousel">
-                        <div class="gallery-item">
-                            <img src="https://images.unsplash.com/photo-1591348278863-a8fb3887e2aa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Pédicure médicale">
-                        </div>
-                        <div class="gallery-item">
-                            <img src="https://images.unsplash.com/photo-1562325959-6a8c2b274b71?auto=format&fit=crop&w=1950&q=80" alt="Massage des pieds">
-                        </div>
-                        <div class="gallery-item">
-                            <img src="https://images.unsplash.com/photo-1519669417670-68775a50919c?auto=format&fit=crop&w=1950&q=80" alt="Soin complet">
-                        </div>
-                        <div class="gallery-item">
-                            <img src="https://images.unsplash.com/photo-1549902529-a515e31c63e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Produits de soin">
-                        </div>
-                        <div class="gallery-item">
-                            <img src="https://images.unsplash.com/photo-1596704017250-7b1583929c28?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Technique professionnelle">
-                        </div>
-                    </div>
-                </div>
-                <div class="photo-credits">
-                    Photos par <a href="https://unsplash.com/" target="_blank">Unsplash</a>
-                </div>
+    <!-- Gallery Carousel -->
+    <section id="gallery" class="section">
+        <div class="section-container">
+            <div class="section-title">
+                <h2>Nos Résultats</h2>
             </div>
-        </section>
-
-        <!-- Testimonials Carousel -->
-        <section id="testimonials" class="section">
-            <div class="section-container">
-                <div class="section-title">
-                    <h2>Témoignages</h2>
-                </div>
-                <div class="carousel-container">
-                    <div class="testimonial-carousel carousel">
-                        <div class="testimonial-card">
-                            <p>"Ann travaille avec une grande précision. Mes ongles incarnés ont été soignés avec professionnalisme et ma corne a été enlevée avec délicatesse. Un client très satisfait avec des pieds parfaitement soignés."</p>
-                            <div class="testimonial-author">- B.B.</div>
-                        </div>
-                        <div class="testimonial-card">
-                            <p>"Merci mille fois pour ces soins exceptionnels, suivis d'un massage réflexologique qui m'a complètement détendu. La meilleure expérience que j'ai jamais eue pour mes pieds."</p>
-                            <div class="testimonial-author">- Jacques B.</div>
-                        </div>
-                        <div class="testimonial-card">
-                            <p>"Je suis une cliente régulière d'Ann car elle prend toujours son temps pour des soins minutieux. Je la recommande sans hésitation pour son professionnalisme et sa gentillesse."</p>
-                            <div class="testimonial-author">- Enayatullah Maryani</div>
-                        </div>
-                        <div class="testimonial-card">
-                            <p>"Une expérience très positive. Ann est à la fois professionnelle et chaleureuse. Elle a pris le temps de bien expliquer chaque étape du soin et nos pieds étaient parfaits après la séance."</p>
-                            <div class="testimonial-author">- Deborah et Willy</div>
-                        </div>
+            <div class="carousel-container">
+                <div class="gallery-carousel carousel">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1591348278863-a8fb3887e2aa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Pédicure médicale">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1562325959-6a8c2b274b71?auto=format&fit=crop&w=1950&q=80" alt="Massage des pieds">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1519669417670-68775a50919c?auto=format&fit=crop&w=1950&q=80" alt="Soin complet">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1549902529-a515e31c63e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Produits de soin">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1596704017250-7b1583929c28?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Technique professionnelle">
                     </div>
                 </div>
             </div>
-        </section>
+            <div class="photo-credits">
+                Photos par <a href="https://unsplash.com/" target="_blank">Unsplash</a>
+            </div>
+        </div>
+    </section>
 
-        <!-- About Ann -->
-        <section id="about-ann" class="section section-about-ann">
-            <div class="section-container">
-                <div class="section-title">
-                    <h2>Votre Praticienne</h2>
-                </div>
-                <div class="about-grid">
-                    <div class="about-text">
-                        <p>Je m'appelle Ann Boks et j'ai créé OEF. après une carrière de 20 ans dans le domaine judiciaire. Cette expérience m'a appris l'importance de l'écoute, de la rigueur et du sens du service.</p>
-                        <p>Passionnée par les soins du corps et le bien-être, j'ai suivi avec succès des formations en pédicure médicale et en réflexologie plantaire, obtenant les plus hautes distinctions. Je continue à me former régulièrement pour offrir les meilleurs soins possibles.</p>
-                        <p>Mon approche allie précision technique et attention personnalisée. Chaque client est unique et mérite des soins adaptés à ses besoins spécifiques.</p>
-                        <p>Prochainement, je compléterai mon expertise par une formation en massothérapie pour élargir encore mes compétences.</p>
+    <!-- Testimonials Carousel -->
+    <section id="testimonials" class="section">
+        <div class="section-container">
+            <div class="section-title">
+                <h2>Témoignages</h2>
+            </div>
+            <div class="carousel-container">
+                <div class="testimonial-carousel carousel">
+                    <div class="testimonial-card">
+                        <p>"Ann travaille avec une grande précision. Mes ongles incarnés ont été soignés avec professionnalisme et ma corne a été enlevée avec délicatesse. Un client très satisfait avec des pieds parfaitement soignés."</p>
+                        <div class="testimonial-author">- B.B.</div>
                     </div>
-                    <div class="about-image" style="background-image: url('https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=1950&q=80')"></div>
+                    <div class="testimonial-card">
+                        <p>"Merci mille fois pour ces soins exceptionnels, suivis d'un massage réflexologique qui m'a complètement détendu. La meilleure expérience que j'ai jamais eue pour mes pieds."</p>
+                        <div class="testimonial-author">- Jacques B.</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"Je suis une cliente régulière d'Ann car elle prend toujours son temps pour des soins minutieux. Je la recommande sans hésitation pour son professionnalisme et sa gentillesse."</p>
+                        <div class="testimonial-author">- Enayatullah Maryani</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"Une expérience très positive. Ann est à la fois professionnelle et chaleureuse. Elle a pris le temps de bien expliquer chaque étape du soin et nos pieds étaient parfaits après la séance."</p>
+                        <div class="testimonial-author">- Deborah et Willy</div>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Locations -->
-        <section id="locations" class="section">
-            <div class="section-container">
-                <div class="section-title">
-                    <h2>Nos Cabinets</h2>
+    <!-- About Ann -->
+    <section id="about-ann" class="section section-about-ann">
+        <div class="section-container">
+            <div class="section-title">
+                <h2>Votre Praticienne</h2>
+            </div>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>Je m'appelle Ann Boks et j'ai créé OEF. après une carrière de 20 ans dans le domaine judiciaire. Cette expérience m'a appris l'importance de l'écoute, de la rigueur et du sens du service.</p>
+                    <p>Passionnée par les soins du corps et le bien-être, j'ai suivi avec succès des formations en pédicure médicale et en réflexologie plantaire, obtenant les plus hautes distinctions. Je continue à me former régulièrement pour offrir les meilleurs soins possibles.</p>
+                    <p>Mon approche allie précision technique et attention personnalisée. Chaque client est unique et mérite des soins adaptés à ses besoins spécifiques.</p>
+                    <p>Prochainement, je compléterai mon expertise par une formation en massothérapie pour élargir encore mes compétences.</p>
                 </div>
-                <div class="locations-grid">
-                    <div class="location-card">
-                        <h3>Vosselaar</h3>
-                        <p><strong>Amanda Beauty Clinic</strong><br>
-                        Antwerpsesteenweg 105<br>
-                        2350 Vosselaar</p>
-                        <div class="map-container">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2682.130377043426!2d4.887714476810594!3d51.31486327177008!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c6adf640a24813%3A0xfa540efa96d46e04!2sAntwerpsesteenweg%20105%2C%202350%20Vosselaar!5e1!3m2!1sfr!2sbe!4v1755123429250!5m2!1sfr!2sbe" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        </div>
-                        <p>Dans ce cadre élégant et professionnel, je collabore avec Amanda, une esthéticienne expérimentée. Vous pouvez combiner votre séance de pédicure avec d'autres soins esthétiques.</p>
-                        <p>Le salon est facilement accessible avec des places de parking disponibles à proximité.</p>
-                        <a href="https://www.google.com/maps/search/?api=1&query=Amanda+Beauty+Clinic+Antwerpsesteenweg+105+2350+Vosselaar" target="_blank" class="location-link">
-                            <i class="fas fa-map-marker-alt"></i> Voir sur la carte
-                        </a>
+                <div class="about-image" style="background-image: url('https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=1950&q=80')"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Locations -->
+    <section id="locations" class="section">
+        <div class="section-container">
+            <div class="section-title">
+                <h2>Nos Cabinets</h2>
+            </div>
+            <div class="locations-grid">
+                <div class="location-card">
+                    <h3>Vosselaar</h3>
+                    <p><strong>Amanda Beauty Clinic</strong><br>
+                    Antwerpsesteenweg 105<br>
+                    2350 Vosselaar</p>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2682.130377043426!2d4.887714476810594!3d51.31486327177008!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c6adf640a24813%3A0xfa540efa96d46e04!2sAntwerpsesteenweg%20105%2C%202350%20Vosselaar!5e1!3m2!1sfr!2sbe!4v1755123429250!5m2!1sfr!2sbe" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
-                    <div class="location-card">
-                        <h3>Merksem</h3>
-                        <p><strong>Massage-a-point</strong><br>
-                        Gagelveldenstraat 103<br>
+                    <p>Dans ce cadre élégant et professionnel, je collabore avec Amanda, une esthéticienne expérimentée. Vous pouvez combiner votre séance de pédicure avec d'autres soins esthétiques.</p>
+                    <p>Le salon est facilement accessible avec des places de parking disponibles à proximité.</p>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Amanda+Beauty+Clinic+Antwerpsesteenweg+105+2350+Vosselaar" target="_blank" class="location-link">
+                        <i class="fas fa-map-marker-alt"></i> Voir sur la carte
+                    </a>
+                </div>
+                <div class="location-card">
+                    <h3>Merksem</h3>
+                    <p><strong>Massage-a-point</strong><br>
+                    Gagelveldenstraat 103<br>
+                    2170 Merksem</p>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2686.2862445586834!2d4.434932876806669!3d51.24374127175462!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3f7c7121fe209%3A0xf823c45accc77f25!2sGagelveldenstraat%20103%2C%202170%20Antwerpen!5e1!3m2!1sfr!2sbe!4v1755123492105!5m2!1sfr!2sbe" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    <p>Un espace dédié au bien-être où plusieurs thérapeutes pratiquent différentes approches complémentaires. L'atmosphère y est calme et propice à la détente.</p>
+                    <p>Accès aisé en transports en commun.</p>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Massage-a-point+Gagelveldenstraat+103+2170+Merksem" target="_blank" class="location-link">
+                        <i class="fas fa-map-marker-alt"></i> Voir sur la carte
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+        <div class="section-container">
+            <div class="section-title">
+                <h2>Prendre Rendez-vous</h2>
+            </div>
+            <div class="contact-grid">
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Nom complet</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Téléphone</label>
+                        <input type="tel" id="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Service souhaité</label>
+                        <select id="service" required>
+                            <option value="">-- Sélectionnez un service --</option>
+                            <option value="pedicure-30">Pédicure 30min (27,5€)</option>
+                            <option value="pedicure-45">Pédicure 45min (40€)</option>
+                            <option value="pedicure-60">Pédicure 60min (62,5€)</option>
+                            <option value="pedicure-luxe">Pédicure Luxe 75min (70€)</option>
+                            <option value="reflexo-15">Massage réflexologique 15min (20€)</option>
+                            <option value="reflexo-30">Massage réflexologique 30min (35€)</option>
+                            <option value="foot-reflexo-30">Réflexologie plantaire 30min (40€)</option>
+                            <option value="foot-reflexo-60">Réflexologie plantaire 60min (70€)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Lieu préféré</label>
+                        <select id="location" required>
+                            <option value="">-- Sélectionnez un lieu --</option>
+                            <option value="vosselaar">Vosselaar (Amanda Beauty Clinic)</option>
+                            <option value="merksem">Merksem (Massage-a-point)</option>
+                            <option value="home">Visite à domicile</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message (facultatif)</label>
+                        <textarea id="message" rows="5"></textarea>
+                    </div>
+                    <button type="submit" class="form-btn">Envoyer la demande</button>
+                </form>
+                <div class="contact-info">
+                    <address>
+                        <h3>Coordonnées</h3>
+                        <p><i class="fas fa-phone"></i> <a href="tel:+32498347767" class="contact-link">0498/34.77.67</a></p>
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:info@oef.be" class="contact-link">info@oef.be</a></p>
+                    </address>
+                    <div class="business-info">
+                        <h3>Informations professionnelles</h3>
+                        <p>OEF. - Ann Boks<br>
+                        Gagelveldenstraat 74<br>
                         2170 Merksem</p>
-                        <div class="map-container">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2686.2862445586834!2d4.434932876806669!3d51.24374127175462!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3f7c7121fe209%3A0xf823c45accc77f25!2sGagelveldenstraat%20103%2C%202170%20Antwerpen!5e1!3m2!1sfr!2sbe!4v1755123492105!5m2!1sfr!2sbe" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        </div>
-                        <p>Un espace dédié au bien-être où plusieurs thérapeutes pratiquent différentes approches complémentaires. L'atmosphère y est calme et propice à la détente.</p>
-                        <p>Accès aisé en transports en commun.</p>
-                        <a href="https://www.google.com/maps/search/?api=1&query=Massage-a-point+Gagelveldenstraat+103+2170+Merksem" target="_blank" class="location-link">
-                            <i class="fas fa-map-marker-alt"></i> Voir sur la carte
-                        </a>
+                        <p>Numéro d'entreprise: 1026.072.136</p>
+                        <p>Compte bancaire: BE45 3632 6030 4489</p>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <!-- Contact -->
-        <section id="contact" class="section">
-            <div class="section-container">
-                <div class="section-title">
-                    <h2>Prendre Rendez-vous</h2>
-                </div>
-                <div class="contact-grid">
-                    <form class="contact-form">
-                        <div class="form-group">
-                            <label for="name">Nom complet</label>
-                            <input type="text" id="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Téléphone</label>
-                            <input type="tel" id="phone" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="service">Service souhaité</label>
-                            <select id="service" required>
-                                <option value="">-- Sélectionnez un service --</option>
-                                <option value="pedicure-30">Pédicure 30min (27,5€)</option>
-                                <option value="pedicure-45">Pédicure 45min (40€)</option>
-                                <option value="pedicure-60">Pédicure 60min (62,5€)</option>
-                                <option value="pedicure-luxe">Pédicure Luxe 75min (70€)</option>
-                                <option value="reflexo-15">Massage réflexologique 15min (20€)</option>
-                                <option value="reflexo-30">Massage réflexologique 30min (35€)</option>
-                                <option value="foot-reflexo-30">Réflexologie plantaire 30min (40€)</option>
-                                <option value="foot-reflexo-60">Réflexologie plantaire 60min (70€)</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="location">Lieu préféré</label>
-                            <select id="location" required>
-                                <option value="">-- Sélectionnez un lieu --</option>
-                                <option value="vosselaar">Vosselaar (Amanda Beauty Clinic)</option>
-                                <option value="merksem">Merksem (Massage-a-point)</option>
-                                <option value="home">Visite à domicile</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message (facultatif)</label>
-                            <textarea id="message" rows="5"></textarea>
-                        </div>
-                        <button type="submit" class="form-btn">Envoyer la demande</button>
-                    </form>
-                    <div class="contact-info">
-                        <address>
-                            <h3>Coordonnées</h3>
-                            <p><i class="fas fa-phone"></i> <a href="tel:+32498347767" class="contact-link">0498/34.77.67</a></p>
-                            <p><i class="fas fa-envelope"></i> <a href="mailto:info@oef.be" class="contact-link">info@oef.be</a></p>
-                        </address>
-                        <div class="business-info">
-                            <h3>Informations professionnelles</h3>
-                            <p>OEF. - Ann Boks<br>
-                            Gagelveldenstraat 74<br>
-                            2170 Merksem</p>
-                            <p>Numéro d'entreprise: 1026.072.136</p>
-                            <p>Compte bancaire: BE45 3632 6030 4489</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        </div>
+    </section>
     </main>
 
     <!-- Footer -->
