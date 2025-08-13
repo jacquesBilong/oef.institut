@@ -29,6 +29,7 @@
             color: var(--texte);
             background-color: var(--blanc);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         h1, h2, h3, h4 {
@@ -49,6 +50,12 @@
             align-items: center;
             box-shadow: 0 2px 15px rgba(0,0,0,0.08);
             border-bottom: 1px solid var(--rose);
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            padding: 0.8rem 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
         .logo-container {
@@ -60,11 +67,22 @@
             font-size: 1.8rem;
             font-weight: 600;
             color: var(--terre);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled .logo {
+            font-size: 1.6rem;
         }
 
         .point {
             color: var(--rose-fonce);
             font-size: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled .point {
+            font-size: 1.8rem;
         }
 
         .slogan {
@@ -72,6 +90,11 @@
             color: var(--terre-clair);
             margin-left: 0.8rem;
             font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled .slogan {
+            font-size: 0.8rem;
         }
 
         nav ul {
@@ -90,21 +113,48 @@
             transition: all 0.3s;
             font-size: 0.95rem;
             letter-spacing: 0.5px;
+            position: relative;
+            padding: 0.5rem 0;
         }
 
         nav a:hover {
             color: var(--rose-fonce);
         }
 
+        nav a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--rose-fonce);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover:after {
+            width: 100%;
+        }
+
+        .header.scrolled nav a {
+            font-size: 0.9rem;
+        }
+
         .nav-number {
             font-size: 0.7rem;
             margin-right: 0.5rem;
             color: var(--rose-fonce);
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled .nav-number {
+            font-size: 0.65rem;
         }
 
         /* Hero Section */
         .hero {
-            height: 90vh;
+            height: 100vh;
+            min-height: 600px;
             background-size: cover;
             background-position: center;
             position: relative;
@@ -132,17 +182,30 @@
             color: var(--terre);
             max-width: 800px;
             padding: 0 2rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: clamp(2.3rem, 5vw, 3.5rem);
             margin-bottom: 1.5rem;
             color: var(--terre);
             line-height: 1.2;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
         }
 
         .hero-text {
-            font-size: 1.3rem;
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
             margin-bottom: 2.5rem;
             font-weight: 300;
             letter-spacing: 0.5px;
@@ -161,27 +224,41 @@
             border: 2px solid var(--rose-fonce);
             letter-spacing: 0.5px;
             font-size: 0.95rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
         }
 
         .hero-btn:hover {
             background-color: transparent;
             color: var(--terre);
             border-color: var(--terre);
+            animation: none;
         }
 
         /* Sections */
         .section {
-            padding: 6rem 2rem;
+            padding: clamp(3rem, 6vw, 6rem) clamp(1rem, 3vw, 2rem);
             position: relative;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: clamp(2rem, 4vw, 4rem);
         }
 
         .section-title h2 {
-            font-size: 2.3rem;
+            font-size: clamp(1.8rem, 3vw, 2.3rem);
             position: relative;
             display: inline-block;
             padding-bottom: 1rem;
@@ -201,23 +278,34 @@
         /* About Section */
         .about-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr;
             gap: 4rem;
             align-items: center;
         }
 
+        @media (min-width: 992px) {
+            .about-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
         .about-image {
-            height: 450px;
+            height: clamp(300px, 40vw, 450px);
             background-size: cover;
             background-position: center;
             border-radius: 8px;
             box-shadow: 0 15px 30px rgba(0,0,0,0.1);
             border: 8px solid var(--rose);
+            transition: transform 0.5s ease;
+        }
+
+        .about-image:hover {
+            transform: scale(1.02);
         }
 
         .about-text p {
             margin-bottom: 1.5rem;
-            font-size: 1.05rem;
+            font-size: clamp(1rem, 1.1vw, 1.05rem);
             line-height: 1.8;
         }
 
@@ -230,6 +318,11 @@
             margin-bottom: 1.2rem;
             display: flex;
             align-items: flex-start;
+            transition: transform 0.3s ease;
+        }
+
+        .about-list li:hover {
+            transform: translateX(5px);
         }
 
         .about-list i {
@@ -242,9 +335,15 @@
         /* Services Section */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: 1fr;
             gap: 2rem;
             margin-top: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .services-grid {
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            }
         }
 
         .service-card {
@@ -265,16 +364,21 @@
             height: 220px;
             background-size: cover;
             background-position: center;
+            transition: transform 0.5s ease;
+        }
+
+        .service-card:hover .service-image {
+            transform: scale(1.05);
         }
 
         .service-content {
-            padding: 2rem;
+            padding: clamp(1.5rem, 2vw, 2rem);
         }
 
         .service-content h3 {
             margin-bottom: 1.5rem;
             color: var(--terre);
-            font-size: 1.5rem;
+            font-size: clamp(1.3rem, 1.5vw, 1.5rem);
         }
 
         .service-list {
@@ -285,6 +389,11 @@
             margin-bottom: 1.2rem;
             padding-bottom: 1.2rem;
             border-bottom: 1px solid var(--rose);
+            transition: all 0.3s ease;
+        }
+
+        .service-list li:hover {
+            border-color: var(--rose-fonce);
         }
 
         .service-list li:last-child {
@@ -299,7 +408,7 @@
         }
 
         .service-details {
-            font-size: 0.95rem;
+            font-size: clamp(0.9rem, 1vw, 0.95rem);
             color: var(--texte);
             margin-top: 0.5rem;
             line-height: 1.6;
@@ -309,7 +418,7 @@
         .carousel-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 clamp(1rem, 3vw, 2rem);
         }
 
         .carousel {
@@ -381,28 +490,33 @@
         }
 
         .testimonial-carousel .slick-slide {
-            padding: 0 30px;
+            padding: 0 clamp(15px, 3vw, 30px);
         }
 
         .testimonial-card {
             background: white;
-            padding: 2.5rem;
+            padding: clamp(1.5rem, 3vw, 2.5rem);
             border-radius: 8px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.05);
             text-align: center;
             margin: 1rem 0;
             position: relative;
             border: 1px solid var(--rose);
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
         }
 
         .testimonial-card:before {
             content: '\201C';
             font-family: Georgia, serif;
-            font-size: 4rem;
+            font-size: clamp(3rem, 5vw, 4rem);
             color: var(--rose);
             position: absolute;
             top: 1rem;
-            left: 1.5rem;
+            left: clamp(1rem, 2vw, 1.5rem);
             line-height: 1;
             opacity: 0.3;
         }
@@ -412,12 +526,13 @@
             margin-bottom: 1.5rem;
             position: relative;
             z-index: 1;
+            font-size: clamp(0.95rem, 1.1vw, 1rem);
         }
 
         .testimonial-author {
             font-weight: 600;
             color: var(--terre);
-            font-size: 0.95rem;
+            font-size: clamp(0.85rem, 1vw, 0.95rem);
         }
 
         .gallery-item {
@@ -426,7 +541,7 @@
             overflow: hidden;
             border-radius: 8px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            height: 300px;
+            height: clamp(250px, 30vw, 300px);
             border: 4px solid var(--rose);
         }
 
@@ -449,28 +564,40 @@
         /* Locations Section */
         .locations-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr;
             gap: 2rem;
             margin-top: 2rem;
         }
 
+        @media (min-width: 768px) {
+            .locations-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
         .location-card {
             background: white;
-            padding: 2.5rem;
+            padding: clamp(1.5rem, 3vw, 2.5rem);
             border-radius: 8px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.05);
             border: 1px solid var(--rose);
+            transition: transform 0.3s ease;
+        }
+
+        .location-card:hover {
+            transform: translateY(-5px);
         }
 
         .location-card h3 {
             color: var(--terre);
             margin-bottom: 1.5rem;
-            font-size: 1.5rem;
+            font-size: clamp(1.3rem, 1.5vw, 1.5rem);
         }
 
         .location-card p {
             margin-bottom: 1rem;
             line-height: 1.7;
+            font-size: clamp(0.95rem, 1.1vw, 1rem);
         }
 
         .location-card strong {
@@ -478,18 +605,55 @@
             font-weight: 500;
         }
 
+        .location-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--rose-fonce);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .location-link:hover {
+            color: var(--terre);
+        }
+
+        .location-link i {
+            margin-right: 0.5rem;
+        }
+
+        /* Map Styles */
+        .map-container {
+            height: 300px;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 1px solid var(--rose);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
         /* Contact Section */
         .contact-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr;
             gap: 4rem;
             margin-top: 2rem;
         }
 
+        @media (min-width: 992px) {
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
         .contact-info {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            order: 2;
         }
 
         .contact-info address {
@@ -504,30 +668,54 @@
             text-align: center;
         }
 
+        .contact-link {
+            color: var(--terre);
+            text-decoration: none;
+            transition: color 0.3s;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-link:hover {
+            color: var(--rose-fonce);
+        }
+
         .business-info {
             background: var(--rose);
-            padding: 2rem;
+            padding: clamp(1.5rem, 3vw, 2rem);
             border-radius: 8px;
+            margin-top: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .business-info:hover {
+            transform: translateY(-5px);
         }
 
         .business-info h3 {
             margin-bottom: 1.2rem;
-            font-size: 1.2rem;
+            font-size: clamp(1.1rem, 1.3vw, 1.2rem);
             color: var(--terre);
         }
 
         .business-info p {
             margin-bottom: 0.8rem;
-            font-size: 0.95rem;
+            font-size: clamp(0.9rem, 1vw, 0.95rem);
             line-height: 1.6;
         }
 
         .contact-form {
             background: white;
-            padding: 2.5rem;
+            padding: clamp(1.5rem, 3vw, 2.5rem);
             border-radius: 8px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.05);
             border: 1px solid var(--rose);
+            order: 1;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-form:hover {
+            transform: translateY(-5px);
         }
 
         .form-group {
@@ -539,19 +727,19 @@
             margin-bottom: 0.6rem;
             color: var(--terre);
             font-weight: 500;
-            font-size: 0.95rem;
+            font-size: clamp(0.9rem, 1vw, 0.95rem);
         }
 
         .form-group input,
         .form-group select,
         .form-group textarea {
             width: 100%;
-            padding: 0.9rem 1rem;
+            padding: clamp(0.8rem, 1vw, 0.9rem) clamp(0.8rem, 1vw, 1rem);
             border: 1px solid var(--rose);
             border-radius: 4px;
             font-family: 'Raleway', sans-serif;
-            font-size: 0.95rem;
-            transition: border-color 0.3s;
+            font-size: clamp(0.9rem, 1vw, 0.95rem);
+            transition: all 0.3s;
         }
 
         .form-group input:focus,
@@ -559,6 +747,7 @@
         .form-group textarea:focus {
             outline: none;
             border-color: var(--terre-clair);
+            box-shadow: 0 0 0 3px rgba(139, 90, 43, 0.1);
         }
 
         .form-group textarea {
@@ -570,39 +759,47 @@
             background-color: var(--rose-fonce);
             color: white;
             border: none;
-            padding: 1rem 2rem;
+            padding: clamp(0.9rem, 1vw, 1rem) clamp(1.5rem, 2vw, 2rem);
             border-radius: 4px;
             cursor: pointer;
             font-weight: 500;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
             width: 100%;
-            font-size: 1rem;
+            font-size: clamp(0.95rem, 1vw, 1rem);
             letter-spacing: 0.5px;
         }
 
         .form-btn:hover {
             background-color: var(--terre);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         /* Footer */
         .footer {
             background-color: var(--terre);
             color: white;
-            padding: 4rem 2rem 2rem;
+            padding: clamp(2rem, 4vw, 4rem) clamp(1rem, 3vw, 2rem) clamp(1rem, 2vw, 2rem);
         }
 
         .footer-content {
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
+            grid-template-columns: 1fr;
+            gap: clamp(1.5rem, 3vw, 3rem);
+        }
+
+        @media (min-width: 768px) {
+            .footer-content {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
         }
 
         .footer-col h3 {
             color: white;
             margin-bottom: 1.5rem;
-            font-size: 1.2rem;
+            font-size: clamp(1.1rem, 1.3vw, 1.2rem);
             position: relative;
             padding-bottom: 0.8rem;
         }
@@ -618,7 +815,7 @@
         }
 
         .footer-logo {
-            font-size: 1.8rem;
+            font-size: clamp(1.5rem, 2vw, 1.8rem);
             margin-bottom: 1rem;
             display: flex;
             align-items: baseline;
@@ -626,7 +823,7 @@
         }
 
         .footer-logo .point {
-            font-size: 1.8rem;
+            font-size: clamp(1.5rem, 2vw, 1.8rem);
             color: var(--rose-fonce);
         }
 
@@ -634,7 +831,7 @@
             font-style: italic;
             color: var(--rose);
             margin-bottom: 1.5rem;
-            font-size: 0.95rem;
+            font-size: clamp(0.85rem, 1vw, 0.95rem);
         }
 
         .footer-links {
@@ -643,13 +840,19 @@
 
         .footer-links li {
             margin-bottom: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+
+        .footer-links li:hover {
+            transform: translateX(5px);
         }
 
         .footer-links a {
             color: var(--rose);
             text-decoration: none;
             transition: color 0.3s;
-            font-size: 0.95rem;
+            font-size: clamp(0.85rem, 1vw, 0.95rem);
+            display: inline-block;
         }
 
         .footer-links a:hover {
@@ -658,10 +861,25 @@
 
         .footer-contact p {
             margin-bottom: 0.8rem;
-            font-size: 0.95rem;
+            font-size: clamp(0.85rem, 1vw, 0.95rem);
             color: var(--rose);
             display: flex;
             align-items: flex-start;
+            transition: transform 0.3s ease;
+        }
+
+        .footer-contact p:hover {
+            transform: translateX(5px);
+        }
+
+        .footer-contact a {
+            color: var(--rose);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-contact a:hover {
+            color: white;
         }
 
         .footer-contact i {
@@ -671,100 +889,109 @@
 
         .footer-bottom {
             text-align: center;
-            margin-top: 3rem;
-            padding-top: 2rem;
+            margin-top: clamp(1.5rem, 3vw, 3rem);
+            padding-top: clamp(1rem, 2vw, 2rem);
             border-top: 1px solid var(--rose-fonce);
-            font-size: 0.9rem;
+            font-size: clamp(0.8rem, 1vw, 0.9rem);
             color: var(--rose);
         }
 
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .about-grid,
-            .contact-grid,
-            .locations-grid {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-
-            .about-image {
-                height: 400px;
-                order: -1;
-            }
-
-            .hero h1 {
-                font-size: 3rem;
-            }
+        /* Photo Credits */
+        .photo-credits {
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.8rem;
+            color: var(--terre-clair);
         }
 
-        @media (max-width: 768px) {
-            .header {
-                flex-direction: column;
-                padding: 1rem;
-            }
+        .photo-credits a {
+            color: var(--terre);
+            text-decoration: none;
+        }
 
-            .logo-container {
-                margin-bottom: 1rem;
-            }
+        .photo-credits a:hover {
+            text-decoration: underline;
+        }
 
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background-color: var(--rose-fonce);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
 
-            nav li {
-                margin: 0 0.8rem 0.5rem;
-            }
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
 
-            .hero h1 {
-                font-size: 2.3rem;
-            }
+        .back-to-top:hover {
+            background-color: var(--terre);
+            transform: translateY(-3px);
+        }
 
-            .hero-text {
-                font-size: 1.1rem;
-            }
+        /* Loading animation */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--blanc);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
 
-            .section {
-                padding: 4rem 1rem;
-            }
+        .loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
 
-            .section-title {
-                margin-bottom: 2.5rem;
-            }
+        .loader-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid var(--rose);
+            border-top-color: var(--rose-fonce);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
 
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .carousel .slick-prev {
-                left: -10px;
-            }
-
-            .carousel .slick-next {
-                right: -10px;
-            }
-
-            .testimonial-carousel .slick-slide {
-                padding: 0 15px;
-            }
-
-            .location-card {
-                padding: 1.5rem;
-            }
-
-            .contact-form {
-                padding: 1.5rem;
-            }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div class="loader">
+        <div class="loader-spinner"></div>
+    </div>
+
     <!-- Header -->
     <header class="header">
-        <div class="logo-container">
+        <a href="#" class="logo-container">
             <span class="logo">OEF</span><span class="point">.</span>
             <span class="slogan">En nu 'efkes niks'</span>
-        </div>
+        </a>
         <nav>
             <ul>
                 <li><a href="#about"><span class="nav-number">01</span> Approche</a></li>
@@ -791,7 +1018,7 @@
         <section id="about" class="section">
             <div class="section-container">
                 <div class="section-title">
-                    <h2><span class="section-number">01</span> Notre Approche</h2>
+                    <h2>Notre Approche</h2>
                 </div>
                 <div class="about-grid">
                     <div class="about-text">
@@ -814,7 +1041,7 @@
         <section id="services" class="section">
             <div class="section-container">
                 <div class="section-title">
-                    <h2><span class="section-number">02</span> Nos Soins</h2>
+                    <h2>Nos Soins</h2>
                 </div>
                 <div class="services-grid">
                     <!-- Pédicure -->
@@ -880,7 +1107,7 @@
         <section id="gallery" class="section">
             <div class="section-container">
                 <div class="section-title">
-                    <h2><span class="section-number">03</span> Nos Résultats</h2>
+                    <h2>Nos Résultats</h2>
                 </div>
                 <div class="carousel-container">
                     <div class="gallery-carousel carousel">
@@ -901,6 +1128,9 @@
                         </div>
                     </div>
                 </div>
+                <div class="photo-credits">
+                    Photos par <a href="https://unsplash.com/" target="_blank">Unsplash</a>
+                </div>
             </div>
         </section>
 
@@ -908,7 +1138,7 @@
         <section id="testimonials" class="section">
             <div class="section-container">
                 <div class="section-title">
-                    <h2><span class="section-number">04</span> Témoignages</h2>
+                    <h2>Témoignages</h2>
                 </div>
                 <div class="carousel-container">
                     <div class="testimonial-carousel carousel">
@@ -937,7 +1167,7 @@
         <section id="about-ann" class="section section-about-ann">
             <div class="section-container">
                 <div class="section-title">
-                    <h2><span class="section-number">05</span> Votre Praticienne</h2>
+                    <h2>Votre Praticienne</h2>
                 </div>
                 <div class="about-grid">
                     <div class="about-text">
@@ -955,7 +1185,7 @@
         <section id="locations" class="section">
             <div class="section-container">
                 <div class="section-title">
-                    <h2><span class="section-number">06</span> Nos Cabinets</h2>
+                    <h2>Nos Cabinets</h2>
                 </div>
                 <div class="locations-grid">
                     <div class="location-card">
@@ -963,16 +1193,28 @@
                         <p><strong>Amanda Beauty Clinic</strong><br>
                         Antwerpsesteenweg 105<br>
                         2350 Vosselaar</p>
+                        <div class="map-container">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2682.130377043426!2d4.887714476810594!3d51.31486327177008!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c6adf640a24813%3A0xfa540efa96d46e04!2sAntwerpsesteenweg%20105%2C%202350%20Vosselaar!5e1!3m2!1sfr!2sbe!4v1755123429250!5m2!1sfr!2sbe" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
                         <p>Dans ce cadre élégant et professionnel, je collabore avec Amanda, une esthéticienne expérimentée. Vous pouvez combiner votre séance de pédicure avec d'autres soins esthétiques.</p>
                         <p>Le salon est facilement accessible avec des places de parking disponibles à proximité.</p>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Amanda+Beauty+Clinic+Antwerpsesteenweg+105+2350+Vosselaar" target="_blank" class="location-link">
+                            <i class="fas fa-map-marker-alt"></i> Voir sur la carte
+                        </a>
                     </div>
                     <div class="location-card">
                         <h3>Merksem</h3>
                         <p><strong>Massage-a-point</strong><br>
                         Gagelveldenstraat 103<br>
                         2170 Merksem</p>
+                        <div class="map-container">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2686.2862445586834!2d4.434932876806669!3d51.24374127175462!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3f7c7121fe209%3A0xf823c45accc77f25!2sGagelveldenstraat%20103%2C%202170%20Antwerpen!5e1!3m2!1sfr!2sbe!4v1755123492105!5m2!1sfr!2sbe" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
                         <p>Un espace dédié au bien-être où plusieurs thérapeutes pratiquent différentes approches complémentaires. L'atmosphère y est calme et propice à la détente.</p>
                         <p>Accès aisé en transports en commun.</p>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Massage-a-point+Gagelveldenstraat+103+2170+Merksem" target="_blank" class="location-link">
+                            <i class="fas fa-map-marker-alt"></i> Voir sur la carte
+                        </a>
                     </div>
                 </div>
             </div>
@@ -982,34 +1224,9 @@
         <section id="contact" class="section">
             <div class="section-container">
                 <div class="section-title">
-                    <h2><span class="section-number">07</span> Prendre Rendez-vous</h2>
+                    <h2>Prendre Rendez-vous</h2>
                 </div>
                 <div class="contact-grid">
-                    <div class="contact-info">
-                        <address>
-                            <h3>Coordonnées</h3>
-                            <p><i class="fas fa-map-marker-alt"></i> <strong>Vosselaar:</strong><br>
-                            Amanda Beauty Clinic<br>
-                            Antwerpsesteenweg 105<br>
-                            2350 Vosselaar</p>
-                            
-                            <p><i class="fas fa-map-marker-alt"></i> <strong>Merksem:</strong><br>
-                            Massage-a-point<br>
-                            Gagelveldenstraat 103<br>
-                            2170 Merksem</p>
-                            
-                            <p><i class="fas fa-phone"></i> 0498/34.77.67</p>
-                            <p><i class="fas fa-envelope"></i> ann.boks@oef-care.be</p>
-                        </address>
-                        <div class="business-info">
-                            <h3>Informations professionnelles</h3>
-                            <p>OEF. - Ann Boks<br>
-                            Gagelveldenstraat 74<br>
-                            2170 Merksem</p>
-                            <p>Numéro d'entreprise: 1026.072.136</p>
-                            <p>Compte bancaire: BE45 3632 6030 4489</p>
-                        </div>
-                    </div>
                     <form class="contact-form">
                         <div class="form-group">
                             <label for="name">Nom complet</label>
@@ -1052,6 +1269,21 @@
                         </div>
                         <button type="submit" class="form-btn">Envoyer la demande</button>
                     </form>
+                    <div class="contact-info">
+                        <address>
+                            <h3>Coordonnées</h3>
+                            <p><i class="fas fa-phone"></i> <a href="tel:+32498347767" class="contact-link">0498/34.77.67</a></p>
+                            <p><i class="fas fa-envelope"></i> <a href="mailto:info@oef.be" class="contact-link">info@oef.be</a></p>
+                        </address>
+                        <div class="business-info">
+                            <h3>Informations professionnelles</h3>
+                            <p>OEF. - Ann Boks<br>
+                            Gagelveldenstraat 74<br>
+                            2170 Merksem</p>
+                            <p>Numéro d'entreprise: 1026.072.136</p>
+                            <p>Compte bancaire: BE45 3632 6030 4489</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1078,8 +1310,8 @@
             <div class="footer-col">
                 <h3>Contact</h3>
                 <div class="footer-contact">
-                    <p><i class="fas fa-phone"></i> 0498/34.77.67</p>
-                    <p><i class="fas fa-envelope"></i> ann.boks@oef-care.be</p>
+                    <p><i class="fas fa-phone"></i> <a href="tel:+32498347767">0498/34.77.67</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:info@oef.be">info@oef.be</a></p>
                     <p><i class="fas fa-map-marker-alt"></i> Vosselaar & Merksem</p>
                 </div>
             </div>
@@ -1095,10 +1327,20 @@
         </div>
     </footer>
 
+    <!-- Back to top button -->
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
     <script>
         $(document).ready(function(){
+            // Hide loader when page is loaded
+            setTimeout(function(){
+                $('.loader').addClass('hidden');
+            }, 1000);
+
             // Gallery Carousel
             $('.gallery-carousel').slick({
                 dots: true,
@@ -1153,10 +1395,31 @@
             // Change header style on scroll
             $(window).scroll(function() {
                 if ($(this).scrollTop() > 100) {
-                    $('.header').css('box-shadow', '0 2px 15px rgba(0,0,0,0.1)');
+                    $('.header').addClass('scrolled');
                 } else {
-                    $('.header').css('box-shadow', '0 2px 15px rgba(0,0,0,0.08)');
+                    $('.header').removeClass('scrolled');
                 }
+
+                // Show/hide back to top button
+                if ($(this).scrollTop() > 300) {
+                    $('.back-to-top').addClass('visible');
+                } else {
+                    $('.back-to-top').removeClass('visible');
+                }
+            });
+
+            // Back to top button
+            $('.back-to-top').click(function() {
+                $('html, body').animate({scrollTop: 0}, 500);
+                return false;
+            });
+
+            // Form submission
+            $('.contact-form').submit(function(e) {
+                e.preventDefault();
+                // Here you would normally send the form data to the server
+                alert('Merci pour votre demande de rendez-vous. Nous vous contacterons bientôt pour confirmer.');
+                this.reset();
             });
         });
     </script>
