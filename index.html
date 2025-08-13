@@ -3,118 +3,1011 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OEF. | Réflexologie Holistique</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;350;400&display=swap" rel="stylesheet">
+    <title>OEF. | Pédicure Médicale & Réflexologie Plantaire</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --rose: #F3D7D7;
+            --rose-fonce: #E8B4B4;
+            --terre: #8B5A2B;
+            --terre-clair: #C4A484;
+            --blanc: #FFF9F9;
+            --texte: #5A4A42;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            color: var(--texte);
+            background-color: var(--blanc);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--terre);
+            font-weight: 500;
+        }
+
+        .header {
+            background-color: var(--blanc);
+            padding: 1.2rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+            border-bottom: 1px solid var(--rose);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: baseline;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--terre);
+        }
+
+        .point {
+            color: var(--rose-fonce);
+            font-size: 2rem;
+        }
+
+        .slogan {
+            font-style: italic;
+            color: var(--terre-clair);
+            margin-left: 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav li {
+            margin-left: 2rem;
+        }
+
+        nav a {
+            color: var(--terre);
+            text-decoration: none;
+            font-weight: 400;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+
+        nav a:hover {
+            color: var(--rose-fonce);
+        }
+
+        .nav-number {
+            font-size: 0.7rem;
+            margin-right: 0.5rem;
+            color: var(--rose-fonce);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 90vh;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-top: 0;
+            padding-top: 80px;
+            background-color: var(--rose);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(243, 215, 215, 0.8), rgba(139, 90, 43, 0.3));
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            color: var(--terre);
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--terre);
+            line-height: 1.2;
+        }
+
+        .hero-text {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            color: var(--terre);
+        }
+
+        .hero-btn {
+            display: inline-block;
+            background-color: var(--rose-fonce);
+            color: white;
+            padding: 0.9rem 2.2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid var(--rose-fonce);
+            letter-spacing: 0.5px;
+            font-size: 0.95rem;
+        }
+
+        .hero-btn:hover {
+            background-color: transparent;
+            color: var(--terre);
+            border-color: var(--terre);
+        }
+
+        /* Sections */
+        .section {
+            padding: 6rem 2rem;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.3rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 1rem;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--rose-fonce);
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            height: 450px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            border: 8px solid var(--rose);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .about-list {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .about-list li {
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .about-list i {
+            margin-right: 1rem;
+            font-size: 1.2rem;
+            color: var(--rose-fonce);
+            margin-top: 0.2rem;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 4px solid var(--rose-fonce);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .service-image {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .service-content {
+            padding: 2rem;
+        }
+
+        .service-content h3 {
+            margin-bottom: 1.5rem;
+            color: var(--terre);
+            font-size: 1.5rem;
+        }
+
+        .service-list {
+            list-style: none;
+        }
+
+        .service-list li {
+            margin-bottom: 1.2rem;
+            padding-bottom: 1.2rem;
+            border-bottom: 1px solid var(--rose);
+        }
+
+        .service-list li:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .service-price {
+            font-weight: 500;
+            color: var(--terre);
+        }
+
+        .service-details {
+            font-size: 0.95rem;
+            color: var(--texte);
+            margin-top: 0.5rem;
+            line-height: 1.6;
+        }
+
+        /* Carousel Styles */
+        .carousel-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .carousel {
+            position: relative;
+        }
+
+        .carousel .slick-slide {
+            padding: 0 15px;
+            outline: none;
+        }
+
+        .carousel .slick-prev, 
+        .carousel .slick-next {
+            width: 40px;
+            height: 40px;
+            z-index: 1;
+            background: var(--rose);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .carousel .slick-prev:hover, 
+        .carousel .slick-next:hover {
+            background: var(--rose-fonce);
+        }
+
+        .carousel .slick-prev {
+            left: -20px;
+        }
+
+        .carousel .slick-next {
+            right: -20px;
+        }
+
+        .carousel .slick-prev:before, 
+        .carousel .slick-next:before {
+            color: var(--terre);
+            font-size: 20px;
+            opacity: 1;
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+        }
+
+        .carousel .slick-prev:before {
+            content: '\f053';
+        }
+
+        .carousel .slick-next:before {
+            content: '\f054';
+        }
+
+        .carousel .slick-dots {
+            bottom: -40px;
+        }
+
+        .carousel .slick-dots li button:before {
+            font-size: 10px;
+            color: var(--rose-fonce);
+            opacity: 0.5;
+        }
+
+        .carousel .slick-dots li.slick-active button:before {
+            color: var(--terre);
+            opacity: 1;
+        }
+
+        .testimonial-carousel .slick-slide {
+            padding: 0 30px;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            text-align: center;
+            margin: 1rem 0;
+            position: relative;
+            border: 1px solid var(--rose);
+        }
+
+        .testimonial-card:before {
+            content: '\201C';
+            font-family: Georgia, serif;
+            font-size: 4rem;
+            color: var(--rose);
+            position: absolute;
+            top: 1rem;
+            left: 1.5rem;
+            line-height: 1;
+            opacity: 0.3;
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--terre);
+            font-size: 0.95rem;
+        }
+
+        .gallery-item {
+            margin: 0 10px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            height: 300px;
+            border: 4px solid var(--rose);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* About Ann Section */
+        .section-about-ann {
+            background-color: var(--rose);
+        }
+
+        /* Locations Section */
+        .locations-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .location-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            border: 1px solid var(--rose);
+        }
+
+        .location-card h3 {
+            color: var(--terre);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .location-card p {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .location-card strong {
+            color: var(--terre);
+            font-weight: 500;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 2rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .contact-info address {
+            font-style: normal;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info i {
+            color: var(--rose-fonce);
+            width: 24px;
+            margin-right: 0.8rem;
+            text-align: center;
+        }
+
+        .business-info {
+            background: var(--rose);
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        .business-info h3 {
+            margin-bottom: 1.2rem;
+            font-size: 1.2rem;
+            color: var(--terre);
+        }
+
+        .business-info p {
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            border: 1px solid var(--rose);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.6rem;
+            color: var(--terre);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            border: 1px solid var(--rose);
+            border-radius: 4px;
+            font-family: 'Raleway', sans-serif;
+            font-size: 0.95rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--terre-clair);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-btn {
+            background-color: var(--rose-fonce);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s;
+            width: 100%;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .form-btn:hover {
+            background-color: var(--terre);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--terre);
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-col h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--rose-fonce);
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: baseline;
+            color: white;
+        }
+
+        .footer-logo .point {
+            font-size: 1.8rem;
+            color: var(--rose-fonce);
+        }
+
+        .footer-slogan {
+            font-style: italic;
+            color: var(--rose);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--rose);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-contact p {
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+            color: var(--rose);
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .footer-contact i {
+            margin-right: 0.8rem;
+            color: var(--rose-fonce);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--rose-fonce);
+            font-size: 0.9rem;
+            color: var(--rose);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .about-grid,
+            .contact-grid,
+            .locations-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .about-image {
+                height: 400px;
+                order: -1;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .logo-container {
+                margin-bottom: 1rem;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav li {
+                margin: 0 0.8rem 0.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+
+            .hero-text {
+                font-size: 1.1rem;
+            }
+
+            .section {
+                padding: 4rem 1rem;
+            }
+
+            .section-title {
+                margin-bottom: 2.5rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .carousel .slick-prev {
+                left: -10px;
+            }
+
+            .carousel .slick-next {
+                right: -10px;
+            }
+
+            .testimonial-carousel .slick-slide {
+                padding: 0 15px;
+            }
+
+            .location-card {
+                padding: 1.5rem;
+            }
+
+            .contact-form {
+                padding: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
     <header class="header">
         <div class="logo-container">
             <span class="logo">OEF</span><span class="point">.</span>
+            <span class="slogan">En nu 'efkes niks'</span>
         </div>
         <nav>
             <ul>
                 <li><a href="#about"><span class="nav-number">01</span> Approche</a></li>
                 <li><a href="#services"><span class="nav-number">02</span> Soins</a></li>
-                <li><a href="#gallery"><span class="nav-number">03</span> Galerie</a></li>
-                <li><a href="#contact"><span class="nav-number">04</span> Contact</a></li>
+                <li><a href="#gallery"><span class="nav-number">03</span> Résultats</a></li>
+                <li><a href="#testimonials"><span class="nav-number">04</span> Témoignages</a></li>
+                <li><a href="#contact"><span class="nav-number">05</span> Contact</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
         <!-- Hero -->
-        <section class="hero" style="background-image: url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1950&q=80')">
+        <section class="hero" style="background-image: url('https://images.unsplash.com/photo-1549902529-a515e31c63e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')">
             <div class="hero-overlay"></div>
             <div class="hero-content">
-                <h1>L'Art du<br>Bien-être</h1>
-                <p class="hero-text">Réflexologie plantaire médicale à Vosselear</p>
+                <h1>Pédicure Médicale & Réflexologie Plantaire</h1>
+                <p class="hero-text">Soins professionnels des pieds à Vosselaar et Merksem</p>
                 <a href="#contact" class="hero-btn">Prendre rendez-vous</a>
             </div>
         </section>
 
         <!-- About -->
-        <section id="about" class="section section-about">
+        <section id="about" class="section">
             <div class="section-container">
-                <h2><span class="section-number">01</span> Notre Philosophie</h2>
+                <div class="section-title">
+                    <h2><span class="section-number">01</span> Notre Approche</h2>
+                </div>
                 <div class="about-grid">
                     <div class="about-text">
-                        <p>OEF. réinvente l'expérience de la réflexologie avec une approche <strong>médicale et énergétique</strong>. Chaque soin est une symphonie de pressions précises, élaborée pour rééquilibrer votre organisme.</p>
-                        <p>Notre espace à Vosselear a été conçu comme un <strong>sanctuaire sensoriel</strong>, où lumière tamisée et senteurs subtiles accompagnent votre retour à l'équilibre.</p>
+                        <p>Chez OEF., nous considérons les soins des pieds comme une pratique essentielle de bien-être. Nos pieds, souvent négligés, sont pourtant le fondement de notre posture et de notre mobilité.</p>
+                        <p>Notre approche combine l'expertise technique de la pédicure médicale avec les bienfaits holistiques de la réflexologie plantaire. Chaque soin est personnalisé selon vos besoins spécifiques.</p>
+                        <p>Nous créons un espace calme et professionnel où chaque client est accueilli avec attention et où chaque traitement est réalisé avec le plus grand soin.</p>
                         <ul class="about-list">
-                            <li><i class="fas fa-spa"></i> Approche holistique</li>
-                            <li><i class="fas fa-hand-holding-heart"></i> Protocoles sur-mesure</li>
-                            <li><i class="fas fa-certificate"></i> Expertise médicale</li>
+                            <li><i class="fas fa-check-circle"></i> Expertise médicale certifiée</li>
+                            <li><i class="fas fa-check-circle"></i> Matériel stérilisé et produits de qualité</li>
+                            <li><i class="fas fa-check-circle"></i> Approche globale du bien-être</li>
+                            <li><i class="fas fa-check-circle"></i> Environnement hygiénique et apaisant</li>
                         </ul>
+                    </div>
+                    <div class="about-image" style="background-image: url('https://images.unsplash.com/photo-1562325959-6a8c2b274b71?auto=format&fit=crop&w=1950&q=80')"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services -->
+        <section id="services" class="section">
+            <div class="section-container">
+                <div class="section-title">
+                    <h2><span class="section-number">02</span> Nos Soins</h2>
+                </div>
+                <div class="services-grid">
+                    <!-- Pédicure -->
+                    <div class="service-card">
+                        <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1596704017250-7b1583929c28?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')"></div>
+                        <div class="service-content">
+                            <h3>Soins de Pédicure</h3>
+                            <ul class="service-list">
+                                <li>
+                                    <div class="service-price">Pédicure 30min - 27,5€</div>
+                                    <div class="service-details">Coupe et limage des ongles, soin des cuticules, nettoyage et hydratation</div>
+                                </li>
+                                <li>
+                                    <div class="service-price">Pédicure 45min - 40€</div>
+                                    <div class="service-details">Soin complet incluant l'élimination des callosités et des peaux mortes</div>
+                                </li>
+                                <li>
+                                    <div class="service-price">Pédicure 60min - 62,5€</div>
+                                    <div class="service-details">Soin approfondi avec massage des points de pression (15min)</div>
+                                </li>
+                                <li>
+                                    <div class="service-price">Pédicure Luxe 75min - 70€</div>
+                                    <div class="service-details">Expérience complète avec gommage, masque et massage relaxant</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Réflexologie -->
+                    <div class="service-card">
+                        <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1950&q=80')"></div>
+                        <div class="service-content">
+                            <h3>Réflexologie & Options</h3>
+                            <ul class="service-list">
+                                <li>
+                                    <div class="service-price">Massage réflexologique 15min - 20€</div>
+                                    <div class="service-details">À combiner avec une pédicure de 30 ou 45min</div>
+                                </li>
+                                <li>
+                                    <div class="service-price">Massage réflexologique 30min - 35€</div>
+                                    <div class="service-details">Inclut les mollets pour une relaxation complète</div>
+                                </li>
+                                <li>
+                                    <div class="service-price">Réflexologie plantaire 30min - 40€</div>
+                                    <div class="service-details">Stimulation des zones réflexes pour un bien-être global</div>
+                                </li>
+                                <li>
+                                    <div class="service-price">Réflexologie plantaire 60min - 70€</div>
+                                    <div class="service-details">Séance complète avec analyse approfondie (recommandée pour la première visite)</div>
+                                </li>
+                                <li>
+                                    <div class="service-price">Options supplémentaires</div>
+                                    <div class="service-details">Pédicure médicale (+7,5€), Vernis (15€), Gel vernis (25€), Visite à domicile (7,5€ + 1€/km au-delà de 5km)</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Carousel -->
+        <section id="gallery" class="section">
+            <div class="section-container">
+                <div class="section-title">
+                    <h2><span class="section-number">03</span> Nos Résultats</h2>
+                </div>
+                <div class="carousel-container">
+                    <div class="gallery-carousel carousel">
+                        <div class="gallery-item">
+                            <img src="https://images.unsplash.com/photo-1591348278863-a8fb3887e2aa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Pédicure médicale">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://images.unsplash.com/photo-1562325959-6a8c2b274b71?auto=format&fit=crop&w=1950&q=80" alt="Massage des pieds">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://images.unsplash.com/photo-1519669417670-68775a50919c?auto=format&fit=crop&w=1950&q=80" alt="Soin complet">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://images.unsplash.com/photo-1549902529-a515e31c63e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Produits de soin">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://images.unsplash.com/photo-1596704017250-7b1583929c28?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Technique professionnelle">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Carousel -->
+        <section id="testimonials" class="section">
+            <div class="section-container">
+                <div class="section-title">
+                    <h2><span class="section-number">04</span> Témoignages</h2>
+                </div>
+                <div class="carousel-container">
+                    <div class="testimonial-carousel carousel">
+                        <div class="testimonial-card">
+                            <p>"Ann travaille avec une grande précision. Mes ongles incarnés ont été soignés avec professionnalisme et ma corne a été enlevée avec délicatesse. Un client très satisfait avec des pieds parfaitement soignés."</p>
+                            <div class="testimonial-author">- B.B.</div>
+                        </div>
+                        <div class="testimonial-card">
+                            <p>"Merci mille fois pour ces soins exceptionnels, suivis d'un massage réflexologique qui m'a complètement détendu. La meilleure expérience que j'ai jamais eue pour mes pieds."</p>
+                            <div class="testimonial-author">- Jacques B.</div>
+                        </div>
+                        <div class="testimonial-card">
+                            <p>"Je suis une cliente régulière d'Ann car elle prend toujours son temps pour des soins minutieux. Je la recommande sans hésitation pour son professionnalisme et sa gentillesse."</p>
+                            <div class="testimonial-author">- Enayatullah Maryani</div>
+                        </div>
+                        <div class="testimonial-card">
+                            <p>"Une expérience très positive. Ann est à la fois professionnelle et chaleureuse. Elle a pris le temps de bien expliquer chaque étape du soin et nos pieds étaient parfaits après la séance."</p>
+                            <div class="testimonial-author">- Deborah et Willy</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Ann -->
+        <section id="about-ann" class="section section-about-ann">
+            <div class="section-container">
+                <div class="section-title">
+                    <h2><span class="section-number">05</span> Votre Praticienne</h2>
+                </div>
+                <div class="about-grid">
+                    <div class="about-text">
+                        <p>Je m'appelle Ann Boks et j'ai créé OEF. après une carrière de 20 ans dans le domaine judiciaire. Cette expérience m'a appris l'importance de l'écoute, de la rigueur et du sens du service.</p>
+                        <p>Passionnée par les soins du corps et le bien-être, j'ai suivi avec succès des formations en pédicure médicale et en réflexologie plantaire, obtenant les plus hautes distinctions. Je continue à me former régulièrement pour offrir les meilleurs soins possibles.</p>
+                        <p>Mon approche allie précision technique et attention personnalisée. Chaque client est unique et mérite des soins adaptés à ses besoins spécifiques.</p>
+                        <p>Prochainement, je compléterai mon expertise par une formation en massothérapie pour élargir encore mes compétences.</p>
                     </div>
                     <div class="about-image" style="background-image: url('https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=1950&q=80')"></div>
                 </div>
             </div>
         </section>
 
-        <!-- Services -->
-        <section id="services" class="section section-services">
+        <!-- Locations -->
+        <section id="locations" class="section">
             <div class="section-container">
-                <h2><span class="section-number">02</span> Nos Soins Experts</h2>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1562325959-6a8c2b274b71?auto=format&fit=crop&w=1950&q=80')"></div>
-                        <div class="service-content">
-                            <h3>Réflexologie Intégrative</h3>
-                            <ul class="service-list">
-                                <li>Soin découverte (30min) - <strong>45€</strong></li>
-                                <li>Réflexologie complète (1h) - <strong>75€</strong></li>
-                                <li>Session énergétique (1h30) - <strong>110€</strong></li>
-                            </ul>
-                            <a href="#contact" class="service-btn">Réserver</a>
-                        </div>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1519669417670-68775a50919c?auto=format&fit=crop&w=1950&q=80')"></div>
-                        <div class="service-content">
-                            <h3>Pédicure Médicale</h3>
-                            <ul class="service-list">
-                                <li>Soin complet (45min) - <strong>60€</strong></li>
-                                <li>Reconstruction ongle - <strong>45€</strong></li>
-                                <li>Soin hydratant - <strong>35€</strong></li>
-                            </ul>
-                            <a href="#contact" class="service-btn">Réserver</a>
-                        </div>
-                    </div>
+                <div class="section-title">
+                    <h2><span class="section-number">06</span> Nos Cabinets</h2>
                 </div>
-            </div>
-        </section>
-
-        <!-- Gallery -->
-        <section id="gallery" class="section section-gallery">
-            <div class="section-container">
-                <h2><span class="section-number">03</span> Galerie</h2>
-                <div class="gallery-grid">
-                    <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1950&q=80')"></div>
-                    <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1562325959-6a8c2b274b71?auto=format&fit=crop&w=1950&q=80')"></div>
-                    <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1519669417670-68775a50919c?auto=format&fit=crop&w=1950&q=80')"></div>
-                    <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=1950&q=80')"></div>
+                <div class="locations-grid">
+                    <div class="location-card">
+                        <h3>Vosselaar</h3>
+                        <p><strong>Amanda Beauty Clinic</strong><br>
+                        Antwerpsesteenweg 105<br>
+                        2350 Vosselaar</p>
+                        <p>Dans ce cadre élégant et professionnel, je collabore avec Amanda, une esthéticienne expérimentée. Vous pouvez combiner votre séance de pédicure avec d'autres soins esthétiques.</p>
+                        <p>Le salon est facilement accessible avec des places de parking disponibles à proximité.</p>
+                    </div>
+                    <div class="location-card">
+                        <h3>Merksem</h3>
+                        <p><strong>Massage-a-point</strong><br>
+                        Gagelveldenstraat 103<br>
+                        2170 Merksem</p>
+                        <p>Un espace dédié au bien-être où plusieurs thérapeutes pratiquent différentes approches complémentaires. L'atmosphère y est calme et propice à la détente.</p>
+                        <p>Accès aisé en transports en commun.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Contact -->
-        <section id="contact" class="section section-contact">
+        <section id="contact" class="section">
             <div class="section-container">
-                <h2><span class="section-number">04</span> Contact</h2>
+                <div class="section-title">
+                    <h2><span class="section-number">07</span> Prendre Rendez-vous</h2>
+                </div>
                 <div class="contact-grid">
                     <div class="contact-info">
                         <address>
-                            <p><i class="fas fa-map-marker-alt"></i> <strong>OEF.</strong><br>Rue Principale 42<br>2350 Vosselear</p>
-                            <p><i class="fas fa-phone"></i> +32 478 12 34 56</p>
-                            <p><i class="fas fa-envelope"></i> contact@oef-reflexo.be</p>
+                            <h3>Coordonnées</h3>
+                            <p><i class="fas fa-map-marker-alt"></i> <strong>Vosselaar:</strong><br>
+                            Amanda Beauty Clinic<br>
+                            Antwerpsesteenweg 105<br>
+                            2350 Vosselaar</p>
+                            
+                            <p><i class="fas fa-map-marker-alt"></i> <strong>Merksem:</strong><br>
+                            Massage-a-point<br>
+                            Gagelveldenstraat 103<br>
+                            2170 Merksem</p>
+                            
+                            <p><i class="fas fa-phone"></i> 0498/34.77.67</p>
+                            <p><i class="fas fa-envelope"></i> ann.boks@oef-care.be</p>
                         </address>
-                        <div class="contact-hours">
-                            <h3>Horaires</h3>
-                            <p><strong>Lun-Ven</strong> 9h-18h<br>
-                            <strong>Sam</strong> 10h-15h</p>
+                        <div class="business-info">
+                            <h3>Informations professionnelles</h3>
+                            <p>OEF. - Ann Boks<br>
+                            Gagelveldenstraat 74<br>
+                            2170 Merksem</p>
+                            <p>Numéro d'entreprise: 1026.072.136</p>
+                            <p>Compte bancaire: BE45 3632 6030 4489</p>
                         </div>
                     </div>
                     <form class="contact-form">
@@ -127,8 +1020,35 @@
                             <input type="email" id="email" required>
                         </div>
                         <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" rows="5" required></textarea>
+                            <label for="phone">Téléphone</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service souhaité</label>
+                            <select id="service" required>
+                                <option value="">-- Sélectionnez un service --</option>
+                                <option value="pedicure-30">Pédicure 30min (27,5€)</option>
+                                <option value="pedicure-45">Pédicure 45min (40€)</option>
+                                <option value="pedicure-60">Pédicure 60min (62,5€)</option>
+                                <option value="pedicure-luxe">Pédicure Luxe 75min (70€)</option>
+                                <option value="reflexo-15">Massage réflexologique 15min (20€)</option>
+                                <option value="reflexo-30">Massage réflexologique 30min (35€)</option>
+                                <option value="foot-reflexo-30">Réflexologie plantaire 30min (40€)</option>
+                                <option value="foot-reflexo-60">Réflexologie plantaire 60min (70€)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="location">Lieu préféré</label>
+                            <select id="location" required>
+                                <option value="">-- Sélectionnez un lieu --</option>
+                                <option value="vosselaar">Vosselaar (Amanda Beauty Clinic)</option>
+                                <option value="merksem">Merksem (Massage-a-point)</option>
+                                <option value="home">Visite à domicile</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message (facultatif)</label>
+                            <textarea id="message" rows="5"></textarea>
                         </div>
                         <button type="submit" class="form-btn">Envoyer la demande</button>
                     </form>
@@ -140,14 +1060,105 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
-            <div class="footer-logo">OEF<span>.</span></div>
-            <div class="footer-links">
-                <a href="#">Mentions légales</a>
-                <a href="#">CGV</a>
-                <a href="#">Politique de confidentialité</a>
+            <div class="footer-col">
+                <div class="footer-logo">OEF<span class="point">.</span></div>
+                <div class="footer-slogan">En nu 'efkes niks'</div>
+                <p>Pédicure médicale & réflexologie plantaire professionnelle à Vosselaar et Merksem.</p>
             </div>
-            <p>© 2024 OEF. Réflexologie Holistique</p>
+            <div class="footer-col">
+                <h3>Navigation</h3>
+                <ul class="footer-links">
+                    <li><a href="#about">Notre Approche</a></li>
+                    <li><a href="#services">Nos Soins</a></li>
+                    <li><a href="#gallery">Résultats</a></li>
+                    <li><a href="#testimonials">Témoignages</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contact</h3>
+                <div class="footer-contact">
+                    <p><i class="fas fa-phone"></i> 0498/34.77.67</p>
+                    <p><i class="fas fa-envelope"></i> ann.boks@oef-care.be</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Vosselaar & Merksem</p>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Horaires</h3>
+                <p>Lundi - Vendredi: 9h - 18h</p>
+                <p>Samedi: 9h - 15h</p>
+                <p>Dimanche: Fermé</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 OEF. | Pédicure Médicale & Réflexologie Plantaire | Tous droits réservés</p>
         </div>
     </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // Gallery Carousel
+            $('.gallery-carousel').slick({
+                dots: true,
+                infinite: true,
+                speed: 500,
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 3000,
+                responsive: [
+                    {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 1
+                        }
+                    },
+                    {
+                        breakpoint: 600,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        }
+                    }
+                ]
+            });
+
+            // Testimonial Carousel
+            $('.testimonial-carousel').slick({
+                dots: true,
+                infinite: true,
+                speed: 500,
+                fade: true,
+                cssEase: 'linear',
+                autoplay: true,
+                autoplaySpeed: 6000,
+                arrows: false
+            });
+
+            // Smooth scrolling for anchor links
+            $('a[href*="#"]').on('click', function(e) {
+                e.preventDefault();
+                $('html, body').animate(
+                    {
+                        scrollTop: $($(this).attr('href')).offset().top - 80,
+                    },
+                    500,
+                    'linear'
+                );
+            });
+
+            // Change header style on scroll
+            $(window).scroll(function() {
+                if ($(this).scrollTop() > 100) {
+                    $('.header').css('box-shadow', '0 2px 15px rgba(0,0,0,0.1)');
+                } else {
+                    $('.header').css('box-shadow', '0 2px 15px rgba(0,0,0,0.08)');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
