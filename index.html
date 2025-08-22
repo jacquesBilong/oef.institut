@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OEF. | Pédicure Médicale & Réflexologie Plantaire</title>
+    <title>OEF. | Medische Pedicure & Voetreflexologie</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
@@ -16,6 +16,7 @@
             --terre-clair: #C4A484;
             --blanc: #FFF9F9;
             --texte: #5A4A42;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
         * {
@@ -40,7 +41,7 @@
 
         .header {
             background-color: var(--blanc);
-            padding: 1.2rem 2rem;
+            padding: 1rem 2rem;
             position: fixed;
             width: 100%;
             top: 0;
@@ -50,65 +51,72 @@
             align-items: center;
             box-shadow: 0 2px 15px rgba(0,0,0,0.08);
             border-bottom: 1px solid var(--rose);
-            transition: all 0.3s ease;
+            transition: var(--transition);
         }
 
         .header.scrolled {
-            padding: 0.8rem 2rem;
+            padding: 0.6rem 2rem;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
-        /* Logo Container */
+        /* Logo Container - AGRANDI */
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             text-decoration: none;
+            flex-shrink: 0;
         }
 
         .logo-img {
-            height: 50px;
+            height: 80px; /* Augmenté à 80px */
             width: auto;
-            transition: all 0.3s ease;
+            transition: var(--transition);
+            filter: brightness(1.2) sepia(0.3) hue-rotate(-5deg) saturate(0.7);
         }
 
         .header.scrolled .logo-img {
-            height: 40px;
+            height: 60px; /* Augmenté à 60px */
         }
 
         .slogan {
             font-style: italic;
-            color: var(--terre-clair);
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
+            color: var(--terre);
+            font-size: 1.1rem;
+            transition: var(--transition);
             margin: 0;
             padding: 0;
             background: transparent;
-            user-select: none;
+            font-weight: 500;
+            white-space: nowrap;
         }
 
         .header.scrolled .slogan {
-            font-size: 0.8rem;
+            font-size: 0.95rem;
         }
 
+        /* Navigation modernisée */
         nav ul {
             display: flex;
             list-style: none;
+            gap: 1.5rem;
         }
 
         nav li {
-            margin-left: 2rem;
+            position: relative;
         }
 
         nav a {
             color: var(--terre);
             text-decoration: none;
-            font-weight: 400;
-            transition: all 0.3s;
+            font-weight: 500;
+            transition: var(--transition);
             font-size: 0.95rem;
             letter-spacing: 0.5px;
             position: relative;
-            padding: 0.5rem 0;
+            padding: 0.8rem 0.5rem;
+            display: flex;
+            align-items: center;
         }
 
         nav a:hover {
@@ -121,9 +129,10 @@
             bottom: 0;
             left: 0;
             width: 0;
-            height: 2px;
+            height: 3px;
             background-color: var(--rose-fonce);
             transition: width 0.3s ease;
+            border-radius: 2px;
         }
 
         nav a:hover:after {
@@ -132,17 +141,145 @@
 
         .header.scrolled nav a {
             font-size: 0.9rem;
+            padding: 0.6rem 0.4rem;
         }
 
         .nav-number {
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             margin-right: 0.5rem;
             color: var(--rose-fonce);
-            transition: all 0.3s ease;
+            transition: var(--transition);
+            font-weight: 600;
+            background: rgba(232, 180, 180, 0.1);
+            padding: 0.2rem 0.4rem;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .header.scrolled .nav-number {
-            font-size: 0.65rem;
+            font-size: 0.7rem;
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Menu mobile amélioré avec fond transparent */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 2.5rem;
+            height: 2.5rem;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 10;
+        }
+
+        .menu-toggle span {
+            width: 100%;
+            height: 0.25rem;
+            background: var(--terre);
+            border-radius: 10px;
+            transition: var(--transition);
+            position: relative;
+            transform-origin: center;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        @media (max-width: 1024px) {
+            .header {
+                padding: 1rem;
+            }
+            
+            .logo-img {
+                height: 70px;
+            }
+            
+            .header.scrolled .logo-img {
+                height: 55px;
+            }
+            
+            nav ul {
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 900px) {
+            nav ul {
+                position: fixed;
+                top: 0;
+                right: 0;
+                height: 100vh;
+                width: 280px;
+                background: rgba(255, 249, 249, 0.95); /* Fond légèrement transparent */
+                backdrop-filter: blur(10px); /* Effet de flou pour le verre */
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                padding: 2rem;
+                transform: translateX(100%);
+                transition: transform 0.4s ease-in-out;
+                box-shadow: -5px 0 25px rgba(0,0,0,0.1);
+                gap: 0;
+            }
+            
+            nav ul.active {
+                transform: translateX(0);
+            }
+            
+            nav li {
+                margin: 1.2rem 0;
+                width: 100%;
+            }
+            
+            nav a {
+                padding: 0.8rem 1rem;
+                width: 100%;
+                border-radius: 6px;
+                font-size: 1.1rem;
+            }
+            
+            nav a:hover {
+                background-color: rgba(232, 180, 180, 0.1);
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .slogan {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 0.8rem 1rem;
+            }
+            
+            .logo-img {
+                height: 60px;
+            }
+            
+            .header.scrolled .logo-img {
+                height: 50px;
+            }
         }
 
         /* Hero Section */
@@ -244,6 +381,11 @@
         .section {
             padding: clamp(3rem, 6vw, 6rem) clamp(1rem, 3vw, 2rem);
             position: relative;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .section-title {
@@ -830,6 +972,7 @@
 
         .footer-links {
             list-style: none;
+            margin-top: 2rem;
         }
 
         .footer-links li {
@@ -973,12 +1116,23 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Empêcher la sélection du texte */
-        ::selection {
-            background: transparent;
+        /* Empêcher le défilement lorsque le menu est ouvert */
+        body.no-scroll {
+            overflow: hidden;
         }
-        ::-moz-selection {
-            background: transparent;
+
+        /* Styles pour les médias personnalisés */
+        .custom-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .custom-video {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
     </style>
 </head>
@@ -991,17 +1145,22 @@
     <!-- Header avec logo image -->
     <header class="header">
         <a href="#" class="logo-container">
-            <!-- Logo en image - à remplacer par votre fichier -->
-            <img src="5.png" alt="Logo OEF" class="logo-img">
-            <!-- Slogan -->
-            <span class="slogan">En nu 'efkes niks'</span>
+            <!-- Remplacez "foto/5.png" par le chemin de votre logo -->
+            <img src="foto/5.png" alt="Logo OEF" class="logo-img">
         </a>
+        
+        <button class="menu-toggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        
         <nav>
             <ul>
-                <li><a href="#about"><span class="nav-number">01</span> Approche</a></li>
-                <li><a href="#services"><span class="nav-number">02</span> Soins</a></li>
-                <li><a href="#gallery"><span class="nav-number">03</span> Résultats</a></li>
-                <li><a href="#testimonials"><span class="nav-number">04</span> Témoignages</a></li>
+                <li><a href="#about"><span class="nav-number">01</span> Aanpak</a></li>
+                <li><a href="#services"><span class="nav-number">02</span> Behandelingen</a></li>
+                <li><a href="#gallery"><span class="nav-number">03</span> Resultaten</a></li>
+                <li><a href="#testimonials"><span class="nav-number">04</span> Getuigenissen</a></li>
                 <li><a href="#contact"><span class="nav-number">05</span> Contact</a></li>
             </ul>
         </nav>
@@ -1009,11 +1168,12 @@
 
     <!-- Hero -->
     <section class="hero" style="background-image: url('https://images.unsplash.com/photo-1549902529-a515e31c63e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')">
+        <!-- Remplacez l'URL par "foto/hero-bg.jpg" pour utiliser votre propre image -->
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1>Pédicure Médicale & Réflexologie Plantaire</h1>
-            <p class="hero-text">Soins professionnels des pieds à Vosselaar et Merksem</p>
-            <a href="#contact" class="hero-btn">Prendre rendez-vous</a>
+            <h1>Medische Pedicure & Voetreflexologie</h1>
+            <p class="hero-text">Professionele voetzorg in Vosselaar en Merksem</p>
+            <a href="#contact" class="hero-btn">Afspraak maken</a>
         </div>
     </section>
 
@@ -1021,21 +1181,24 @@
     <section id="about" class="section">
         <div class="section-container">
             <div class="section-title">
-                <h2>Notre Approche</h2>
+                <h2>Onze Aanpak</h2>
             </div>
             <div class="about-grid">
                 <div class="about-text">
-                    <p>Chez OEF., nous considérons les soins des pieds comme une pratique essentielle de bien-être. Nos pieds, souvent négligés, sont pourtant le fondement de notre posture et de notre mobilité.</p>
-                    <p>Notre approche combine l'expertise technique de la pédicure médicale avec les bienfaits holistiques de la réflexologie plantaire. Chaque soin est personnalisé selon vos besoins spécifiques.</p>
-                    <p>Nous créons un espace calme et professionnel où chaque client est accueilli avec attention et où chaque traitement est réalisé avec le plus grand soin.</p>
+                    <p>OEF. staat voor "Ondersteuning, Efficiëntie en Flexibiliteit". Het is mijn missie om kwalitatieve voetzorg te bieden die toegankelijk is voor iedereen, met aandacht voor zowel preventie als behandeling.</p>
+                    <p>Bij OEF. geloven we dat voetzorg een essentieel onderdeel is van ons welzijn. Onze voeten, vaak verwaarloosd, zijn nochtans de fundamenten van onze houding en mobiliteit.</p>
+                    <p>Onze aanpak combineert de technische expertise van medische pedicure met de holistische voordelen van voetreflexologie. Elke behandeling is persoonlijk afgestemd op uw specifieke behoeften.</p>
+                    <p>We creëren een kalme en professionele omgeving waar elke cliënt met aandacht wordt verwelkomd en elke behandeling met de grootste zorg wordt uitgevoerd.</p>
                     <ul class="about-list">
-                        <li><i class="fas fa-check-circle"></i> Expertise médicale certifiée</li>
-                        <li><i class="fas fa-check-circle"></i> Matériel stérilisé et produits de qualité</li>
-                        <li><i class="fas fa-check-circle"></i> Approche globale du bien-être</li>
-                        <li><i class="fas fa-check-circle"></i> Environnement hygiénique et apaisant</li>
+                        <li><i class="fas fa-check-circle"></i> Gecertificeerde medische expertise</li>
+                        <li><i class="fas fa-check-circle"></i> Gesteriliseerd materiaal en kwaliteitsproducten</li>
+                        <li><i class="fas fa-check-circle"></i> Holistische benadering van welzijn</li>
+                        <li><i class="fas fa-check-circle"></i> Hygiënische en rustgevende omgeving</li>
                     </ul>
                 </div>
-                <div class="about-image" style="background-image: url('https://images.unsplash.com/photo-1562325959-6a8c2b274b71?auto=format&fit=crop&w=1950&q=80')"></div>
+                <div class="about-image" style="background-image: url('https://images.unsplash.com/photo-1562325959-6a8c2b274b71?auto=format&fit=crop&w=1950&q=83')">
+                    <!-- Remplacez l'URL par "foto/about.jpg" pour utiliser votre propre image -->
+                </div>
             </div>
         </div>
     </section>
@@ -1044,60 +1207,64 @@
     <section id="services" class="section">
         <div class="section-container">
             <div class="section-title">
-                <h2>Nos Soins</h2>
+                <h2>Onze Behandelingen</h2>
             </div>
             <div class="services-grid">
-                <!-- Pédicure -->
+                <!-- Pedicure -->
                 <div class="service-card">
-                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1596704017250-7b1583929c28?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')"></div>
+                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1596704017250-7b1583929c28?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')">
+                        <!-- Remplacez l'URL par "foto/service-pedicure.jpg" pour utiliser votre propre image -->
+                    </div>
                     <div class="service-content">
-                        <h3>Soins de Pédicure</h3>
+                        <h3>Pedicure Behandelingen</h3>
                         <ul class="service-list">
                             <li>
-                                <div class="service-price">Pédicure 30min - 27,5€</div>
-                                <div class="service-details">Coupe et limage des ongles, soin des cuticules, nettoyage et hydratation</div>
+                                <div class="service-price">Pedicure 30min - 27,5€</div>
+                                <div class="service-details">Knippen en vijlen van nagels, verzorging van nagelriemen, reiniging en hydratatie</div>
                             </li>
                             <li>
-                                <div class="service-price">Pédicure 45min - 40€</div>
-                                <div class="service-details">Soin complet incluant l'élimination des callosités et des peaux mortes</div>
+                                <div class="service-price">Pedicure 45min - 40€</div>
+                                <div class="service-details">Volledige behandeling inclusief verwijdering van eelt en dode huid</div>
                             </li>
                             <li>
-                                <div class="service-price">Pédicure 60min - 62,5€</div>
-                                <div class="service-details">Soin approfondi avec massage des points de pression (15min)</div>
+                                <div class="service-price">Pedicure 60min - 62,5€</div>
+                                <div class="service-details">Diepgaande behandeling met massage van drukpunten (15min)</div>
                             </li>
                             <li>
-                                <div class="service-price">Pédicure Luxe 75min - 70€</div>
-                                <div class="service-details">Expérience complète avec gommage, masque et massage relaxant</div>
+                                <div class="service-price">Luxe Pedicure 75min - 70€</div>
+                                <div class="service-details">Complete ervaring met scrub, masker en ontspannende massage</div>
                             </li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Réflexologie -->
+                <!-- Reflexologie -->
                 <div class="service-card">
-                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1950&q=80')"></div>
+                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1950&q=80')">
+                        <!-- Remplacez l'URL par "foto/service-reflexology.jpg" pour utiliser votre propre image -->
+                    </div>
                     <div class="service-content">
-                        <h3>Réflexologie & Options</h3>
+                        <h3>Reflexologie & Opties</h3>
                         <ul class="service-list">
                             <li>
-                                <div class="service-price">Massage réflexologique 15min - 20€</div>
-                                <div class="service-details">À combiner avec une pédicure de 30 ou 45min</div>
+                                <div class="service-price">Reflexologische massage 15min - 20€</div>
+                                <div class="service-details">Te combineren met een pedicure van 30 of 45min</div>
                             </li>
                             <li>
-                                <div class="service-price">Massage réflexologique 30min - 35€</div>
-                                <div class="service-details">Inclut les mollets pour une relaxation complète</div>
+                                <div class="service-price">Reflexologische massage 30min - 35€</div>
+                                <div class="service-details">Inclusief kuiten voor complete ontspanning</div>
                             </li>
                             <li>
-                                <div class="service-price">Réflexologie plantaire 30min - 40€</div>
-                                <div class="service-details">Stimulation des zones réflexes pour un bien-être global</div>
+                                <div class="service-price">Voetreflexologie 30min - 40€</div>
+                                <div class="service-details">Stimulatie van reflexzones voor algemeen welzijn</div>
                             </li>
                             <li>
-                                <div class="service-price">Réflexologie plantaire 60min - 70€</div>
-                                <div class="service-details">Séance complète avec analyse approfondie (recommandée pour la première visite)</div>
+                                <div class="service-price">Voetreflexologie 60min - 70€</div>
+                                <div class="service-details">Volledige sessie met diepgaande analyse (aanbevolen voor eerste bezoek)</div>
                             </li>
                             <li>
-                                <div class="service-price">Options supplémentaires</div>
-                                <div class="service-details">Pédicure médicale (+7,5€), Vernis (15€), Gel vernis (25€), Visite à domicile (7,5€ + 1€/km au-delà de 5km)</div>
+                                <div class="service-price">Extra opties</div>
+                                <div class="service-details">Medische pedicure (+7,5€), Nagellak (15€), Gellak (25€), Huisbezoek (7,5€ + 1€/km boven 5km)</div>
                             </li>
                         </ul>
                     </div>
@@ -1110,29 +1277,35 @@
     <section id="gallery" class="section">
         <div class="section-container">
             <div class="section-title">
-                <h2>Nos Résultats</h2>
+                <h2>Onze Resultaten</h2>
             </div>
             <div class="carousel-container">
                 <div class="gallery-carousel carousel">
                     <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1591348278863-a8fb3887e2aa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Pédicure médicale">
+                        <!-- Remplacez l'URL par "foto/gallery-1.jpg" pour utiliser votre propre image -->
+                        <img src="https://images.unsplash.com/photo-1591348278863-a8fb3887e2aa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Medische pedicure">
                     </div>
                     <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1562325959-6a8c2b274b71?auto=format&fit=crop&w=1950&q=80" alt="Massage des pieds">
+                        <!-- Remplacez l'URL par "foto/gallery-2.jpg" pour utiliser votre propre image -->
+                        <img src="https://images.unsplash.com/photo-1562325959-6a8c2b274b71?auto=format&fit=crop&w=1950&q=80" alt="Voetmassage">
                     </div>
                     <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1519669417670-68775a50919c?auto=format&fit=crop&w=1950&q=80" alt="Soin complet">
+                        <!-- Remplacez l'URL par "foto/gallery-3.jpg" pour utiliser votre propre image -->
+                        <img src="https://images.unsplash.com/photo-1519669417670-68775a50919c?auto=format&fit=crop&w=1950&q=80" alt="Complete behandeling">
                     </div>
                     <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1549902529-a515e31c63e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Produits de soin">
+                        <!-- Remplacez l'URL par "foto/gallery-4.jpg" pour utiliser votre propre image -->
+                        <img src="https://images.unsplash.com/photo-1549902529-a515e31c63e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Verzorgingsproducten">
                     </div>
                     <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1596704017250-7b1583929c28?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Technique professionnelle">
+                        <!-- Remplacez l'URL par "foto/gallery-5.jpg" pour utiliser votre propre image -->
+                        <img src="https://images.unsplash.com/photo-1596704017250-7b1583929c28?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Professionele techniek">
                     </div>
                 </div>
             </div>
             <div class="photo-credits">
-                Photos par <a href="https://unsplash.com/" target="_blank">Unsplash</a>
+                <!-- Supprimez cette ligne si vous utilisez vos propres photos -->
+                Foto's door <a href="https://unsplash.com/" target="_blank">Unsplash</a>
             </div>
         </div>
     </section>
@@ -1141,25 +1314,25 @@
     <section id="testimonials" class="section">
         <div class="section-container">
             <div class="section-title">
-                <h2>Témoignages</h2>
+                <h2>Getuigenissen</h2>
             </div>
             <div class="carousel-container">
                 <div class="testimonial-carousel carousel">
                     <div class="testimonial-card">
-                        <p>"Ann travaille avec une grande précision. Mes ongles incarnés ont été soignés avec professionnalisme et ma corne a été enlevée avec délicatesse. Un client très satisfait avec des pieds parfaitement soignés."</p>
+                        <p>"Ann werkt met grote precisie. Mijn ingegroeide nagels werden professioneel verzorgd en mijn eelt werd met veel zorg verwijderd. Een zeer tevreden klant avec perfect verzorgde voeten."</p>
                         <div class="testimonial-author">- B.B.</div>
                     </div>
                     <div class="testimonial-card">
-                        <p>"Merci mille fois pour ces soins exceptionnels, suivis d'un massage réflexologique qui m'a complètement détendu. La meilleure expérience que j'ai jamais eue pour mes pieds."</p>
+                        <p>"Dankjewel voor deze uitzonderlijke verzorging, gevolgd door een reflexologische massage die me volledig heeft ontspannen. De beste ervaring die ik ooit heb gehad voor mijn voeten."</p>
                         <div class="testimonial-author">- Jacques B.</div>
                     </div>
                     <div class="testimonial-card">
-                        <p>"Je suis une cliente régulière d'Ann car elle prend toujours son temps pour des soins minutieux. Je la recommande sans hésitation pour son professionnalisme et sa gentillesse."</p>
+                        <p>"Ik ben een vaste klant van Ann omdat ze altijd de tijd neemt voor zorgvuldige behandelingen. Ik beveel haar zonder aarzeling aan voor haar professionalisme en vriendelijkheid."</p>
                         <div class="testimonial-author">- Enayatullah Maryani</div>
                     </div>
                     <div class="testimonial-card">
-                        <p>"Une expérience très positive. Ann est à la fois professionnelle et chaleureuse. Elle a pris le temps de bien expliquer chaque étape du soin et nos pieds étaient parfaits après la séance."</p>
-                        <div class="testimonial-author">- Deborah et Willy</div>
+                        <p>"Een zeer positieve ervaring. Ann is zowel professioneel als warm. Ze nam de tijd om elke stap van de behandeling uit te leggen en onze voeten waren perfect na de sessie."</p>
+                        <div class="testimonial-author">- Deborah en Willy</div>
                     </div>
                 </div>
             </div>
@@ -1170,16 +1343,18 @@
     <section id="about-ann" class="section section-about-ann">
         <div class="section-container">
             <div class="section-title">
-                <h2>Votre Praticienne</h2>
+                <h2>Uw Therapeut</h2>
             </div>
             <div class="about-grid">
                 <div class="about-text">
-                    <p>Je m'appelle Ann Boks et j'ai créé OEF. après une carrière de 20 ans dans le domaine judiciaire. Cette expérience m'a appris l'importance de l'écoute, de la rigueur et du sens du service.</p>
-                    <p>Passionnée par les soins du corps et le bien-être, j'ai suivi avec succès des formations en pédicure médicale et en réflexologie plantaire, obtenant les plus hautes distinctions. Je continue à me former régulièrement pour offrir les meilleurs soins possibles.</p>
-                    <p>Mon approche allie précision technique et attention personnalisée. Chaque client est unique et mérite des soins adaptés à ses besoins spécifiques.</p>
-                    <p>Prochainement, je compléterai mon expertise par une formation en massothérapie pour élargir encore mes compétences.</p>
+                    <p>Mijn naam is Ann Boks en ik heb OEF. opgericht na een carrière van 20 jaar in de juridische sector. Deze ervaring heeft me het belang geleerd van luisteren, nauwkeurigheid en servicegerichtheid.</p>
+                    <p>Gepassioneerd door lichaamsverzorging and welzijn, heb ik met succes opleidingen gevolgd in medische pedicure en voetreflexologie, waarbij ik de hoogste onderscheidingen behaalde. Ik blijf me regelmatig bijscholen om de best mogelijke zorg te kunnen bieden.</p>
+                    <p>Mijn aanpak combineert technische precisie met persoonlijke aandacht. Elke cliënt is uniek en verdient zorg die is afgestemd op zijn of haar specifieke behoeften.</p>
+                    <p>Binnenkort zal ik mijn expertise uitbreiden met een opleiding in massagetherapie om mijn vaardigheden verder te verbreden.</p>
                 </div>
-                <div class="about-image" style="background-image: url('https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=1950&q=80')"></div>
+                <div class="about-image" style="background-image: url('https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=1950&q=80')">
+                    <!-- Remplacez l'URL par "foto/ann-boks.jpg" pour utiliser votre propre image -->
+                </div>
             </div>
         </div>
     </section>
@@ -1188,7 +1363,7 @@
     <section id="locations" class="section">
         <div class="section-container">
             <div class="section-title">
-                <h2>Nos Cabinets</h2>
+                <h2>Onze Praktijken</h2>
             </div>
             <div class="locations-grid">
                 <div class="location-card">
@@ -1199,10 +1374,10 @@
                     <div class="map-container">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2682.130377043426!2d4.887714476810594!3d51.31486327177008!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c6adf640a24813%3A0xfa540efa96d46e04!2sAntwerpsesteenweg%20105%2C%202350%20Vosselaar!5e1!3m2!1sfr!2sbe!4v1755123429250!5m2!1sfr!2sbe" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
-                    <p>Dans ce cadre élégant et professionnel, je collabore avec Amanda, une esthéticienne expérimentée. Vous pouvez combiner votre séance de pédicure avec d'autres soins esthétiques.</p>
-                    <p>Le salon est facilement accessible avec des places de parking disponibles à proximité.</p>
+                    <p>In deze elegante en professionele omgeving werk ik samen met Amanda, een ervaren schoonheidsspecialiste. U kunt uw pedicure-sessie combineren met andere schoonheidsbehandelingen.</p>
+                    <p>De salon is gemakkelijk bereikbaar met parkeerplaatsen in de buurt.</p>
                     <a href="https://www.google.com/maps/search/?api=1&query=Amanda+Beauty+Clinic+Antwerpsesteenweg+105+2350+Vosselaar" target="_blank" class="location-link">
-                        <i class="fas fa-map-marker-alt"></i> Voir sur la carte
+                        <i class="fas fa-map-marker-alt"></i> Bekijk op kaart
                     </a>
                 </div>
                 <div class="location-card">
@@ -1213,10 +1388,10 @@
                     <div class="map-container">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2686.2862445586834!2d4.434932876806669!3d51.24374127175462!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3f7c7121fe209%3A0xf823c45accc77f25!2sGagelveldenstraat%20103%2C%202170%20Antwerpen!5e1!3m2!1sfr!2sbe!4v1755123492105!5m2!1sfr!2sbe" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
-                    <p>Un espace dédié au bien-être où plusieurs thérapeutes pratiquent différentes approches complémentaires. L'atmosphère y est calme et propice à la détente.</p>
-                    <p>Accès aisé en transports en commun.</p>
+                    <p>Een ruimte gewijd aan welzijn waar verschillende therapeuten complementaire benaderingen beoefenen. De sfeer is er kalm en bevorderlijk voor ontspanning.</p>
+                    <p>Makkelijk bereikbaar met het openbaar vervoer.</p>
                     <a href="https://www.google.com/maps/search/?api=1&query=Massage-a-point+Gagelveldenstraat+103+2170+Merksem" target="_blank" class="location-link">
-                        <i class="fas fa-map-marker-alt"></i> Voir sur la carte
+                        <i class="fas fa-map-marker-alt"></i> Bekijk op kaart
                     </a>
                 </div>
             </div>
@@ -1227,12 +1402,12 @@
     <section id="contact" class="section">
         <div class="section-container">
             <div class="section-title">
-                <h2>Prendre Rendez-vous</h2>
+                <h2>Afspraak Maken</h2>
             </div>
             <div class="contact-grid">
                 <form class="contact-form">
                     <div class="form-group">
-                        <label for="name">Nom complet</label>
+                        <label for="name">Volledige naam</label>
                         <input type="text" id="name" required>
                     </div>
                     <div class="form-group">
@@ -1240,57 +1415,56 @@
                         <input type="email" id="email" required>
                     </div>
                     <div class="form-group">
-                        <label for="phone">Téléphone</label>
+                        <label for="phone">Telefoon</label>
                         <input type="tel" id="phone" required>
                     </div>
                     <div class="form-group">
-                        <label for="service">Service souhaité</label>
+                        <label for="service">Gewenste behandeling</label>
                         <select id="service" required>
-                            <option value="">-- Sélectionnez un service --</option>
-                            <option value="pedicure-30">Pédicure 30min (27,5€)</option>
-                            <option value="pedicure-45">Pédicure 45min (40€)</option>
-                            <option value="pedicure-60">Pédicure 60min (62,5€)</option>
-                            <option value="pedicure-luxe">Pédicure Luxe 75min (70€)</option>
-                            <option value="reflexo-15">Massage réflexologique 15min (20€)</option>
-                            <option value="reflexo-30">Massage réflexologique 30min (35€)</option>
-                            <option value="foot-reflexo-30">Réflexologie plantaire 30min (40€)</option>
-                            <option value="foot-reflexo-60">Réflexologie plantaire 60min (70€)</option>
+                            <option value="">-- Selecteer een behandeling --</option>
+                            <option value="pedicure-30">Pedicure 30min (27,5€)</option>
+                            <option value="pedicure-45">Pedicure 45min (40€)</option>
+                            <option value="pedicure-60">Pedicure 60min (62,5€)</option>
+                            <option value="pedicure-luxe">Luxe Pedicure 75min (70€)</option>
+                            <option value="reflexo-15">Reflexologische massage 15min (20€)</option>
+                            <option value="reflexo-30">Reflexologische massage 30min (35€)</option>
+                            <option value="foot-reflexo-30">Voetreflexologie 30min (40€)</option>
+                            <option value="foot-reflexo-60">Voetreflexologie 60min (70€)</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="location">Lieu préféré</label>
+                        <label for="location">Gewenste locatie</label>
                         <select id="location" required>
-                            <option value="">-- Sélectionnez un lieu --</option>
+                            <option value="">-- Selecteer een locatie --</option>
                             <option value="vosselaar">Vosselaar (Amanda Beauty Clinic)</option>
                             <option value="merksem">Merksem (Massage-a-point)</option>
-                            <option value="home">Visite à domicile</option>
+                            <option value="home">Thuisbezoek</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="message">Message (facultatif)</label>
+                        <label for="message">Bericht (optioneel)</label>
                         <textarea id="message" rows="5"></textarea>
                     </div>
-                    <button type="submit" class="form-btn">Envoyer la demande</button>
+                    <button type="submit" class="form-btn">Verzend aanvraag</button>
                 </form>
                 <div class="contact-info">
                     <address>
-                        <h3>Coordonnées</h3>
+                        <h3>Contactgegevens</h3>
                         <p><i class="fas fa-phone"></i> <a href="tel:+32498347767" class="contact-link">0498/34.77.67</a></p>
                         <p><i class="fas fa-envelope"></i> <a href="mailto:info@oef.be" class="contact-link">info@oef.be</a></p>
                     </address>
                     <div class="business-info">
-                        <h3>Informations professionnelles</h3>
+                        <h3>Professionele informatie</h3>
                         <p>OEF. - Ann Boks<br>
                         Gagelveldenstraat 74<br>
                         2170 Merksem</p>
-                        <p>Numéro d'entreprise: 1026.072.136</p>
-                        <p>Compte bancaire: BE45 3632 6030 4489</p>
+                        <p>Ondernemingsnummer: 1026.072.136</p>
+                        <p>Bankrekening: BE45 3632 6030 4489</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    </main>
 
     <!-- Footer -->
     <footer class="footer">
@@ -1298,15 +1472,15 @@
             <div class="footer-col">
                 <div class="footer-logo">OEF<span class="point">.</span></div>
                 <div class="footer-slogan">En nu 'efkes niks'</div>
-                <p>Pédicure médicale & réflexologie plantaire professionnelle à Vosselaar et Merksem.</p>
+                <p>Professionele medische pedicure & voetreflexologie in Vosselaar en Merksem.</p>
             </div>
             <div class="footer-col">
-                <h3>Navigation</h3>
+                <h3>Navigatie</h3>
                 <ul class="footer-links">
-                    <li><a href="#about">Notre Approche</a></li>
-                    <li><a href="#services">Nos Soins</a></li>
-                    <li><a href="#gallery">Résultats</a></li>
-                    <li><a href="#testimonials">Témoignages</a></li>
+                    <li><a href="#about">Onze Aanpak</a></li>
+                    <li><a href="#services">Behandelingen</a></li>
+                    <li><a href="#gallery">Resultaten</a></li>
+                    <li><a href="#testimonials">Getuigenissen</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
@@ -1319,14 +1493,15 @@
                 </div>
             </div>
             <div class="footer-col">
-                <h3>Horaires</h3>
-                <p>Lundi - Vendredi: 9h - 18h</p>
-                <p>Samedi: 9h - 15h</p>
-                <p>Dimanche: Fermé</p>
+                <h3>Openingsuren</h3>
+                <p>Maandag - Vrijdag: 9u - 18u</p>
+                <p>Zaterdag: 9u - 15u</p>
+                <p>Zondag: Gesloten</p>
+                <p><em>Op afspraak</em></p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2024 OEF. | Pédicure Médicale & Réflexologie Plantaire | Tous droits réservés</p>
+            <p>© 2024 OEF. | Medische Pedicure & Voetreflexologie | Alle rechten voorbehouden</p>
         </div>
     </footer>
 
@@ -1343,6 +1518,29 @@
             setTimeout(function(){
                 $('.loader').addClass('hidden');
             }, 1000);
+
+            // Mobile menu toggle amélioré
+            $('.menu-toggle').click(function() {
+                $(this).toggleClass('active');
+                $('nav ul').toggleClass('active');
+                $('body').toggleClass('no-scroll');
+            });
+
+            // Close mobile menu when clicking on a link
+            $('nav a').click(function() {
+                $('nav ul').removeClass('active');
+                $('.menu-toggle').removeClass('active');
+                $('body').removeClass('no-scroll');
+            });
+
+            // Close menu when clicking outside
+            $(document).click(function(e) {
+                if (!$(e.target).closest('nav, .menu-toggle').length) {
+                    $('nav ul').removeClass('active');
+                    $('.menu-toggle').removeClass('active');
+                    $('body').removeClass('no-scroll');
+                }
+            });
 
             // Gallery Carousel
             $('.gallery-carousel').slick({
@@ -1385,14 +1583,16 @@
 
             // Smooth scrolling for anchor links
             $('a[href*="#"]').on('click', function(e) {
-                e.preventDefault();
-                $('html, body').animate(
-                    {
-                        scrollTop: $($(this).attr('href')).offset().top - 80,
-                    },
-                    500,
-                    'linear'
-                );
+                if ($(this).attr('href') !== '#' && $(this).attr('href') !== '') {
+                    e.preventDefault();
+                    $('html, body').animate(
+                        {
+                            scrollTop: $($(this).attr('href')).offset().top - 80,
+                        },
+                        500,
+                        'linear'
+                    );
+                }
             });
 
             // Change header style on scroll
@@ -1421,11 +1621,10 @@
             $('.contact-form').submit(function(e) {
                 e.preventDefault();
                 // Here you would normally send the form data to the server
-                alert('Merci pour votre demande de rendez-vous. Nous vous contacterons bientôt pour confirmer.');
+                alert('Bedankt voor uw afspraakverzoek. We contacteren u zo snel mogelijk om te bevestigen.');
                 this.reset();
             });
         });
     </script>
 </body>
 </html>
-
