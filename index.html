@@ -730,13 +730,16 @@
             font-size: clamp(1.3rem, 1.5vw, 1.5rem);
             position: relative;
             display: inline-block;
+            text-align: center;
+            width: 100%;
         }
 
         .location-card h3:after {
             content: '';
             position: absolute;
             bottom: -8px;
-            left: 0;
+            left: 50%;
+            transform: translateX(-50%);
             width: 40px;
             height: 2px;
             background-color: var(--rose-fonce);
@@ -746,6 +749,7 @@
             margin-bottom: 1rem;
             line-height: 1.7;
             font-size: clamp(0.95rem, 1.1vw, 1rem);
+            text-align: center;
         }
 
         .location-card strong {
@@ -760,6 +764,8 @@
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s;
+            text-align: center;
+            width: 100%;
         }
 
         .location-link:hover {
@@ -868,6 +874,7 @@
 
         .form-group {
             margin-bottom: 1.5rem;
+            text-align: left;
         }
 
         .form-group label {
@@ -876,6 +883,7 @@
             color: var(--terre);
             font-weight: 500;
             font-size: clamp(0.9rem, 1vw, 0.95rem);
+            text-align: left;
         }
 
         .form-group input,
@@ -920,7 +928,7 @@
         .form-btn:hover {
             background-color: var(--terre);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 极细 5px 15px rgba(0,0,0,0.1);
         }
 
         /* Footer */
@@ -950,13 +958,15 @@
             font-size: clamp(1.1rem, 1.3vw, 1.2rem);
             position: relative;
             padding-bottom: 0.8rem;
+            text-align: center;
         }
 
         .footer-col h3:after {
             content: '';
             position: absolute;
             bottom: 0;
-            left: 0;
+            left: 50%;
+            transform: translateX(-50%);
             width: 40px;
             height: 2px;
             background-color: var(--rose-fonce);
@@ -968,6 +978,8 @@
             display: flex;
             align-items: baseline;
             color: white;
+            text-decoration: none;
+            justify-content: center;
         }
 
         .footer-logo .point {
@@ -980,11 +992,13 @@
             color: var(--rose);
             margin-bottom: 1.5rem;
             font-size: clamp(0.85rem, 1vw, 0.95rem);
+            text-align: center;
         }
 
         .footer-links {
             list-style: none;
             margin-top: 2rem;
+            text-align: center;
         }
 
         .footer-links li {
@@ -1015,6 +1029,7 @@
             display: flex;
             align-items: flex-start;
             transition: transform 0.3s ease;
+            justify-content: center;
         }
 
         .footer-contact p:hover {
@@ -1106,7 +1121,7 @@
             justify-content: center;
             align-items: center;
             z-index: 9999;
-            transition: opacity 0.5s, visibility 0.5s;
+            transition: opacity 极细 0.5s, visibility 0.5s;
         }
 
         .loader.hidden {
@@ -1259,6 +1274,66 @@
             text-align: center;
             font-style: italic;
         }
+
+        /* Personal photo gallery */
+        .personal-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .personal-gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            height: 250px;
+            border: 4px solid var(--rose);
+        }
+
+        .personal-gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .personal-gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Hero personal photo */
+        .hero-personal {
+            height: 60vh;
+            min-height: 400px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin: 2rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .hero-personal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(243, 215, 215, 0.8), rgba(139, 90, 43, 0.3));
+        }
+
+        .hero-personal-content {
+            position: relative;
+            z-index: 1;
+            color: var(--terre);
+            max-width: 800px;
+            padding: 0 2rem;
+        }
     </style>
 </head>
 <body>
@@ -1270,8 +1345,7 @@
     <!-- Header avec logo image -->
     <header class="header">
         <a href="#" class="logo-container">
-            <img src="5.png" alt="Logo OEF" class="logo-img">
-            <div class="slogan">Medische Pedicure & Voetreflexologie</div>
+            <img src="foto/logo/" alt="Logo OEF" class="logo-img">
         </a>
         
         <button class="menu-toggle" aria-label="Toggle menu">
@@ -1286,15 +1360,15 @@
                 <li><a href="#behandelingen"><span class="nav-number">02</span> Behandelingen</a></li>
                 <li><a href="#galerij"><span class="nav-number">03</span> Galerij</a></li>
                 <li><a href="#reviews"><span class="nav-number">04</span> Reviews</a></li>
-                <li><a href="#over-ann"><span class="nav-number">05</span> Over Ann</a></li>
+                <li><a href="#visie-en-prestaties"><span class="nav-number">05</span> Visie & Prestaties</a></li>
                 <li><a href="#locaties"><span class="nav-number">06</span> Locaties</a></li>
                 <li><a href="#contact"><span class="nav-number">07</span> Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Hero -->
-    <section class="hero" style="background-image: url('https://images.unsplash.com/photo-1549902529-a515e31c63e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')">
+    <!-- Hero avec votre photo personnelle -->
+    <section class="hero" style="background-image: url('foto/hero.jpg')">
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1>OEF. Medische Pedicure & Voetreflexologie</h1>
@@ -1303,22 +1377,26 @@
         </div>
     </section>
 
-    <!-- Visie -->
-    <section id="visie" class="section">
+    <!-- Section photo personnelle à l'accueil -->
+    <section class="section">
         <div class="section-container">
             <div class="section-title">
-                <h2>Onze Visie</h2>
+                <h2>Welkom bij OEF</h2>
             </div>
             
-            <div class="welcome-message">
-                <p>Welkom. Zet u. OEF. En nu... 'efkes niks'.</p>
+            <div class="hero-personal" style="background-image: url('foto/welcome.jpg')">
+                <div class="hero-personal-overlay"></div>
+                <div class="hero-personal-content">
+                    <h2>Ontspanning en zorg voor uw voeten</h2>
+                    <p>Professionele behandelingen in een rustgevende omgeving</p>
+                </div>
             </div>
             
             <div class="about-grid">
                 <div class="about-text">
-                    <p>OEF. staat voor <strong>Ondersteuning, Efficiëntie en Flexibiliteit</strong>. Het is mijn missie om kwalitatieve voetzorg te bieden die toegankelijk is voor iedereen, met aandacht voor zowel preventie als behandeling.</p>
+                    <p>Onze voeten zijn ons ware fundament. Hoewel ze vaak verwaarloosd worden, is een goede gezondheid essentieel voor ons welzijn. Daarom heb ik me als missie gesteld om u kwaliteitsvolle voetzorg te bieden.</p>
                     
-                    <p>Bij OEF. zijn we ervan overtuigd dat goede voetverzorging een essentieel onderdeel is van ons welzijn. Onze voeten, vaak verwaarloosd, zijn letterlijk onze fundamenten. Ze verdienen dan ook meer dan alleen een laagje lak.</p>
+                    <p>Tijdens de behandeling kunt u zich volledig ontspannen, terwijl uw voeten deskundig en met de grootste toewijding worden verzorgd.</p>
                     
                     <div class="da-vinci-quote">
                         <blockquote>
@@ -1326,20 +1404,9 @@
                             <cite>- Leonardo da Vinci</cite>
                         </blockquote>
                     </div>
-                    
-                    <p>Wie bij OEF. een behandeling boekt, wordt niet gezien als klant maar als 'patiënt'. Ons doel is u écht te helpen, met een persoonlijke aanpak die afgestemd is op uw specifieke behoeften en wensen.</p>
-                    
-                    <p>We creëren een kalme en professionele omgeving waar elke cliënt met aandacht wordt verwelkomd en elke behandeling met de grootste zorg wordt uitgevoerd.</p>
-                    
-                    <ul class="about-list">
-                        <li><i class="fas fa-check-circle"></i> Gecertificeerd 'gespecialiseerd voetverzorger' (medische pedicure)</li>
-                        <li><i class="fas fa-check-circle"></i> Gesteriliseerd materiaal en kwaliteitsproducten</li>
-                        <li><i class="fas fa-check-circle"></i> Holistische benadering van welzijn</li>
-                        <li><i class="fas fa-check-circle"></i> Hygiënische en rustgevende omgeving</li>
-                    </ul>
                 </div>
-                <div class="about-image" style="background-image: url('https://images.unsplash.com/photo-1562325959-6a8c2b274b71?auto=format&fit=crop&w=1950&q=83')">
-                    <!-- Remplacez l'URL par "foto/visie.jpg" pour utiliser votre propre image -->
+                <div class="about-image" style="background-image: url('foto/visie.jpg')">
+                    <!-- Votre photo personnelle -->
                 </div>
             </div>
         </div>
@@ -1354,47 +1421,43 @@
             
             <div class="about-grid">
                 <div class="about-text">
-                    <p>Bij OEF. combineren we de technische expertise van medische pedicure avec de holistische voordelen van voetreflexologie*. Elke behandeling is persoonlijk afgestemd op uw specifieke behoeften.</p>
+                    <p>Bij OEF. combineren we de technische expertise van medische pedicure met de holistische voordelen van voetreflexologie. Elke behandeling is persoonlijk afgestemd op uw specifieke behoeften.</p>
                     
                     <div class="treatment-info">
                         <h3>Medische Pedicure</h3>
                         <p>Professionele voetverzorging met aandacht voor preventie en behandeling van voetproblemen. We werken met gesteriliseerd materiaal en kwaliteitsproducten.</p>
                         
-                        <h3>Voetreflexologie*</h3>
-                        <p>Bij voetreflexologie stimuleren we de (uiteinden van) zenuwbanen en reflexzones in de voeten, door het uitoefenen van druk, waardoor we blokkades in heel het lichaam kunnen verhelpen. Deze behandeling werd lang afgedaan als 'zweverig', maar de voordelen ervan raken meer en meer erkend door de 'klassieke' medische wetenschap.</p>
-                        <p class="note">Tijdens de behandeling kan enig ongemak ervaren worden, omdat er veel druk wordt uitgeoefend.</p>
+                        <h3>Voetreflexologie</h3>
+                        <p>Met voetreflexologie stimuleren we de zenuwbanen en reflexzones van de voeten, waardoor we blokkades in het hele lichaam kunnen opheffen.</p>
+                        <p class="note">Tijdens de behandeling kan enig ongemak ervaren worden, omdat er stevige druk wordt uitgeoefend.</p>
                     </div>
                 </div>
                 
-                <div class="about-image" style="background-image: url('https://images.unsplash.com/photo-1596704017250-7b1583929c28?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')">
-                    <!-- Remplacez l'URL par "foto/behandelingen.jpg" pour utiliser votre propre image -->
+                <div class="about-image" style="background-image: url('foto/reflexologie.jpg')">
+                    <!-- Image changée pour la réflexologie -->
                 </div>
             </div>
             
             <div class="services-grid">
                 <!-- Pedicure -->
                 <div class="service-card">
-                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1596704017250-7b1583929c28?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')">
-                        <!-- Remplacez l'URL par "foto/service-pedicure.jpg" pour utiliser votre propre image -->
+                    <div class="service-image" style="background-image: url('foto/pedicure.jpg')">
+                        <!-- Votre photo personnelle -->
                     </div>
                     <div class="service-content">
                         <h3>Pedicure Behandelingen</h3>
                         <ul class="service-list">
                             <li>
                                 <div class="service-price">Pedicure 30min - 27,5€</div>
-                                <div class="service-details">Knippen en vijlen van nagels, verzorging van nagelriemen, reiniging en hydratatie</div>
+                                <div class="service-details">Knippen en vijlen van nagels, verzorging van nagelriemen en hydratatie</div>
                             </li>
                             <li>
                                 <div class="service-price">Pedicure 45min - 40€</div>
                                 <div class="service-details">Volledige behandeling inclusief verwijdering van eelt en dode huid</div>
                             </li>
                             <li>
-                                <div class="service-price">Pedicure 60min - 62,5€</div>
-                                <div class="service-details">Diepgaande behandeling met massage van drukpunten (15min)</div>
-                            </li>
-                            <li>
-                                <div class="service-price">Luxe Pedicure 75min - 70€</div>
-                                <div class="service-details">Complete ervaring met scrub, masker en ontspannende massage</div>
+                                <div class="service-price">Pedicure 60min - 60€</div>
+                                <div class="service-details">Diepgaande behandeling met massage van drukpunten</div>
                             </li>
                         </ul>
                     </div>
@@ -1402,31 +1465,27 @@
 
                 <!-- Reflexologie -->
                 <div class="service-card">
-                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1950&q=80')">
-                        <!-- Remplacez l'URL par "foto/service-reflexology.jpg" pour utiliser votre propre image -->
+                    <div class="service-image" style="background-image: url('foto/massage.jpg')">
+                        <!-- Votre photo personnelle -->
                     </div>
                     <div class="service-content">
                         <h3>Reflexologie & Opties</h3>
                         <ul class="service-list">
                             <li>
-                                <div class="service-price">Reflexologische massage 15min - 20€</div>
-                                <div class="service-details">Te combineren met een pedicure van 30 or 45min</div>
+                                <div class="service-price">Reflexologische massage 15min - 22,5€</div>
+                                <div class="service-details">Te combineren met een pedicure</div>
                             </li>
                             <li>
                                 <div class="service-price">Reflexologische massage 30min - 35€</div>
-                                <div class="service-details">Inclusief kuiten voor complete ontspanning</div>
+                                <div class="service-details">Inclusief bas des jambes voor complete ontspanning</div>
                             </li>
                             <li>
-                                <div class="service-price">Voetreflexologie 30min - 40€</div>
-                                <div class="service-details">Stimulatie van reflexzones voor algemeen welzijn</div>
-                            </li>
-                            <li>
-                                <div class="service-price">Voetreflexologie 60min - 70€</div>
-                                <div class="service-details">Volledige sessie met diepgaande analyse (aanbevolen voor eerste bezoek)</div>
+                                <div class="service-price">Medische behandeling</div>
+                                <div class="service-details">(ongle incarné, durillon, etc.) - te vermelden bij afspraak</div>
                             </li>
                             <li>
                                 <div class="service-price">Extra opties</div>
-                                <div class="service-details">Medische pedicure (+7,5€), Nagellak (15€), Gellak (25€), Huisbezoek (7,5€ + 1€/km boven 5km)</div>
+                                <div class="service-details">Nagellak (15€), Gellak (25€), Huisbezoek (7,5€ + 1€/km boven 5km)</div>
                             </li>
                         </ul>
                     </div>
@@ -1441,28 +1500,25 @@
             <div class="section-title">
                 <h2>Galerij</h2>
             </div>
-            <div class="carousel-container">
-                <div class="gallery-carousel carousel">
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1591348278863-a8fb3887e2aa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Medische pedicure">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1562325959-6a8c2b274b71?auto=format&fit=crop&w=1950&q=80" alt="Voetmassage">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1519669417670-68775a50919c?auto=format&fit=crop&w=1950&q=80" alt="Complete behandeling">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1549902529-a515e31c63e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Verzorgingsproducten">
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1596704017250-7b1583929c28?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Professionele techniek">
-                    </div>
+            
+            <!-- Galerie personnelle -->
+            <div class="personal-gallery">
+                <div class="personal-gallery-item">
+                    <img src="foto/galerie1.jpg" alt="Behandeling 1">
+                </div>
+                <div class="personal-gallery-item">
+                    <img src="foto/galerie2.jpg" alt="Behandeling 2">
+                </div>
+                <div class="personal-gallery-item">
+                    <img src="foto/galerie3.jpg" alt="Behandeling 3">
+                </div>
+                <div class="personal-gallery-item">
+                    <img src="foto/galerie4.jpg" alt="Behandeling 4">
                 </div>
             </div>
+            
             <div class="photo-credits">
-                <!-- Supprimez cette ligne si vous utilisez vos propres photos -->
-                Foto's door <a href="https://unsplash.com/" target="_blank">Unsplash</a>
+                Alle foto's zijn eigendom van OEF. Medische Pedicure & Voetreflexologie
             </div>
         </div>
     </section>
@@ -1481,7 +1537,7 @@
                         <div class="testimonial-author">- B.B. -</div>
                     </div>
                     <div class="testimonial-card">
-                        <p>"De beste voetverzorging die ik ooit kreeg, gevolgd door een ontspannende reflexologiemassage."</p>
+                        <p>"Ann, heel erg bedankt, je bent welkom om je massage te ontvangen, om te genieten van een ontspannende reflexologiemassage."</p>
                         <div class="testimonial-author">- Jacques B. -</div>
                     </div>
                     <div class="testimonial-card">
@@ -1489,7 +1545,7 @@
                         <div class="testimonial-author">- Enayatullah Maryani -</div>
                     </div>
                     <div class="testimonial-card">
-                        <p>"Ann neemt haar tijd, werkt hygiënisch en geeft nuttige tips. Na de behandeling voelden onze voeten fris en verzorgd."</p>
+                        <p>"We hebben een geweldige ervaring gehad. Ann nam echt de tijd voor ons en gaf duidelijke uitleg en advies over hoe we voor onze voeten kunnen zorgen."</p>
                         <div class="testimonial-author">- Deborah en Willy -</div>
                     </div>
                     <div class="testimonial-card">
@@ -1501,24 +1557,22 @@
         </div>
     </section>
 
-    <!-- Over Ann -->
-    <section id="over-ann" class="section section-about-ann">
+    <!-- Visie en Prestaties -->
+    <section id="visie-en-prestaties" class="section section-about-ann">
         <div class="section-container">
             <div class="section-title">
-                <h2>Over Ann Boks</h2>
+                <h2>Visie & Prestaties</h2>
             </div>
             <div class="about-grid">
                 <div class="about-text">
                     <p>Mijn naam is Ann Boks en ik heb OEF. opgericht na een carrière van 20 jaar in de juridische sector. Deze ervaring heeft me het belang geleerd van luisteren, nauwkeurigheid en servicegerichtheid.</p>
                     
-                    <p>Gepassioneerd door lichaamsverzorging en welzijn, heb ik met succes opleidingen gevolgd in medische pedicure en voetreflexologie, waarbij ik de hoogste onderscheidingen behaalde. Ik blijf me regelmatig bijscholen om de best mogelijke zorg te kunnen bieden.</p>
+                    <p>Gepassioneerd door lichaamsverzorging en welzijn, heb ik met succes opleidingen gevolgd in medische pedicure en voetreflexologie. Ik blijf me regelmatig bijscholen om de best mogelijke zorg te kunnen bieden.</p>
                     
                     <p>Mijn aanpak combineert technische precisie met persoonlijke aandacht. Elke patiënt is uniek en verdient zorg die is afgestemd op zijn of haar specifieke behoeften.</p>
-                    
-                    <p>Ik ga binnenkort nog een opleiding massagetherapie volgen om mijn vaardigheden verder te verbreden.</p>
                 </div>
-                <div class="about-image" style="background-image: url('https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=1950&q=80')">
-                    <!-- Remplacez l'URL par "foto/ann-boks.jpg" pour utiliser votre propre image -->
+                <div class="about-image" style="background-image: url('foto/ann.jpg')">
+                    <!-- Votre photo personnelle -->
                 </div>
             </div>
         </div>
@@ -1541,6 +1595,9 @@
                     </div>
                     <p>In deze elegante en professionele omgeving werk ik samen met Amanda, een ervaren schoonheidsspecialiste. U kunt uw pedicure-sessie combineren met andere schoonheidsbehandelingen.</p>
                     <p>Het salon is gemakkelijk bereikbaar met parkeerplaatsen in de buurt.</p>
+                    <a href="https://www.amandabeautyclinic.be" target="_blank" class="location-link">
+                        <i class="fas fa-external-link-alt"></i> Bezoek website
+                    </a>
                     <a href="https://www.google.com/maps/search/?api=1&query=Amanda+Beauty+Clinic+Antwerpsesteenweg+105+2350+Vosselaar" target="_blank" class="location-link">
                         <i class="fas fa-map-marker-alt"></i> Bekijk op kaart
                     </a>
@@ -1562,7 +1619,7 @@
             </div>
             
             <div class="location-note">
-                <p>Huisbezoeken zijn mogelijk mits een kleine meerprijs. Gelieve me per WhatsApp of SMS te contacteren voor een afspraak.</p>
+                <p>Ik werk uitsluitend op afspraak, waarbij ik mijn uren aanpas aan de behoeften van mijn cliënten. Huisbezoeken zijn mogelijk mits een kleine meerprijs.</p>
             </div>
         </div>
     </section>
@@ -1593,12 +1650,10 @@
                             <option value="">-- Selecteer een behandeling --</option>
                             <option value="pedicure-30">Pedicure 30min (27,5€)</option>
                             <option value="pedicure-45">Pedicure 45min (40€)</option>
-                            <option value="pedicure-60">Pedicure 60min (62,5€)</option>
-                            <option value="pedicure-luxe">Luxe Pedicure 75min (70€)</option>
-                            <option value="reflexo-15">Reflexologische massage 15min (20€)</option>
+                            <option value="pedicure-60">Pedicure 60min (60€)</option>
+                            <option value="reflexo-15">Reflexologische massage 15min (22,5€)</option>
                             <option value="reflexo-30">Reflexologische massage 30min (35€)</option>
-                            <option value="foot-reflexo-30">Voetreflexologie 30min (40€)</option>
-                            <option value="foot-reflexo-60">Voetreflexologie 60min (70€)</option>
+                            <option value="medical">Medische behandeling (te bespreken)</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -1612,9 +1667,9 @@
                     </div>
                     <div class="form-group">
                         <label for="message">Bericht (optioneel)</label>
-                        <textarea id="message" rows="5"></textarea>
+                        <textarea id="message" rows="5" placeholder="Vermeld hier eventuele medische aandachtspunten zoals ingegroeide nagels, eeltplekken, etc."></textarea>
                     </div>
-                    <button type="submit" class="form-btn">Verzend aanvraag</button>
+                    <button type="submit" class="form-btn">Verzend aanvraak</button>
                 </form>
                 <div class="contact-info">
                     <address>
@@ -1640,7 +1695,7 @@
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-col">
-                <div class="footer-logo">OEF<span class="point">.</span></div>
+                <a href="#" class="footer-logo">OEF<span class="point">.</span></a>
                 <div class="footer-slogan">En nu 'efkes niks'</div>
                 <p>Professionele medische pedicure & voetreflexologie in Vosselaar en Merksem.</p>
             </div>
@@ -1651,7 +1706,7 @@
                     <li><a href="#behandelingen">Behandelingen</a></li>
                     <li><a href="#galerij">Galerij</a></li>
                     <li><a href="#reviews">Reviews</a></li>
-                    <li><a href="#over-ann">Over Ann</a></li>
+                    <li><a href="#visie-en-prestaties">Visie & Prestaties</a></li>
                     <li><a href="#locaties">Locaties</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -1667,10 +1722,8 @@
             </div>
             <div class="footer-col">
                 <h3>Openingsuren</h3>
-                <p>Maandag - Vrijdag: 9u - 18u</p>
-                <p>Zaterdag: 9u - 15u</p>
-                <p>Zondag: Gesloten</p>
-                <p><em>Op afspraak</em></p>
+                <p>Op afspraak</p>
+                <p>Flexibele uren aangepast aan de behoeften van mijn cliënten</p>
             </div>
         </div>
         <div class="footer-bottom">
